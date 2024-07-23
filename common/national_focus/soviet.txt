@@ -6847,7 +6847,7 @@ focus_tree = {
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		cost = 5
 
-		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition focus = SOV_the_passassination_of_Stalin}
+		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition focus = SOV_dissatisfaction_with_the_government}
 
 		allow_branch = {
 			if = {
@@ -8251,7 +8251,7 @@ focus_tree = {
 		id = SOV_the_left_opposition
 		icon = GFX_focus_fra_loyalty_trotzky
 		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
-		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_centre focus = SOV_the_passassination_of_Stalin}
+		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_centre focus = SOV_dissatisfaction_with_the_government}
 		x = 2
 		y = 1
 		offset = {
@@ -9531,7 +9531,7 @@ focus_tree = {
 				NOT = { has_completed_focus = SOV_beaten_but_not_defeated }
 			}
 		}
-		mutually_exclusive = { focus = SOV_the_left_opposition focus = SOV_the_centre focus = SOV_the_passassination_of_Stalin}
+		mutually_exclusive = { focus = SOV_the_left_opposition focus = SOV_the_centre focus = SOV_dissatisfaction_with_the_government}
 		x = 15
 		y = 0
 		relative_position_id = SOV_the_left_opposition
@@ -18478,13 +18478,16 @@ ai_will_do = {
 			}
 		}
 	}
-
 	focus = {
-		id = SOV_the_passassination_of_Stalin
+		id = SOV_dissatisfaction_with_the_government
 		icon = GFX_focus_SOV_third_rome
 		cost = 5
 		completion_reward = {
-			 add_political_power = 75
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			 add_political_power = 25
 			 add_stability = -0.1
 			}
 		prerequisite = {focus = SOV_the_path_of_marxism_leninism}
@@ -18499,6 +18502,19 @@ ai_will_do = {
 		y = 1
 	}
 	focus = {
+		id = SOV_the_passassination_of_Stalin
+		icon = GFX_focus_SOV_third_rome
+		cost = 5
+		completion_reward = {
+			country_event = { id = my_soviet_events.1 }
+			 add_political_power = 25
+			}
+		prerequisite = {focus = SOV_dissatisfaction_with_the_government}
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		x = -4.5
+		y = 2
+	}
+	focus = {
 		id = The_Great_Depression
 		icon = GFX_focus_SOV_third_rome
 		cost = 5
@@ -18509,751 +18525,138 @@ ai_will_do = {
 		prerequisite = {focus = SOV_the_passassination_of_Stalin}
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		x = -4.5
-		y = 2
+		y = 3
+	}
+	focus = {
+		id = restoration_of_industry
+		icon = GFX_focus_SOV_third_rome
+		cost = 10
+		completion_reward = {
+			 add_political_power = 10
+			}
+		prerequisite = {focus = The_Great_Depression}
+		
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		x = -4.5
+		y = 4
+	}
+	focus = {
+		id = SOV_To_hell_and_back
+		icon = GFX_focus_SOV_the_true_tsars
+		prerequisite = { focus = restoration_of_industry }
+		x = -4.5
+		y = 5
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		cost = 10
+		completion_reward = {
+		add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = SOV_Return_ownership
+		icon = GFX_focus_POL_common_organization_of_society
+		prerequisite = { focus = SOV_To_hell_and_back}
+		x = -4.5
+		y = 6
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
+
+			modifier = {
+				factor = 0.5
+				ai_irrationality < 24
+			}
+			modifier = {
+				factor = 0.5
+				ai_irrationality < 20
+			}
+			modifier = {
+				factor = 0.5
+				ai_irrationality < 15
+			}
+			modifier = {
+				factor = 0.1
+				ai_irrationality < 10
+			}
+		}
+
+		available = {
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			country_exists = POL
+			NOT = { has_war_with = POL }
+			POL = {
+				SOV_is_valid_subject = yes
+				has_capitulated = no
+			}
+			is_subject = no
+		}
+
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			POL = {
+				country_event = { id = poland.5 }
+				custom_effect_tooltip = needs_approval
+				effect_tooltip = {
+					add_state_claim = 5
+					add_state_claim = 63
+					add_state_claim = 68
+					add_state_claim = 66
+					add_state_claim = 67
+					custom_effect_tooltip = SOV_offer_poland_protection_tt
+					#This will also make Poland and Soviet be more more keen on cooperating
+				}
+			}
+			effect_tooltip = {
+				SOV = {
+					if = {
+						limit = { POL = { owns_state = 96 controls_state = 96 } }
+						transfer_state = 96
+					}
+					if = {
+						limit = { POL = { owns_state = 95 controls_state = 95 } }
+						transfer_state = 95
+					}
+					if = {
+						limit = { POL = { owns_state = 94 controls_state = 94 } }
+						transfer_state = 94
+					}
+					if = {
+						limit = { POL = { owns_state = 93 controls_state = 93 } }
+						transfer_state = 93
+					}
+					if = {
+						limit = { POL = { owns_state = 91 controls_state = 91 } }
+						transfer_state = 91
+					}
+					if = {
+						limit = { POL = { owns_state = 89 controls_state = 89 } }
+						transfer_state = 89
+					}
+					if = {
+						limit = { POL = { owns_state = 97 controls_state = 97 } }
+						transfer_state = 97
+					}
+					if = {
+						limit = { POL = { owns_state = 784 controls_state = 784 } }
+						transfer_state = 784
+					}
+				}
+			}
+		}
 	}
 }
-###  ###  ##  ###  ##  #  #  ##  #    	   ## ### #  # ### ###         
-#  # #   #     #  #  # ## # #  # #    	  #    #  #  # #   #   {~._.~} 
-###  ##  # ##  #  #  # # ## #### #    	   #   #  #  # ##  ##   ( Y )  
-#  # #   #  #  #  #  # #  # #  # #    	    #  #  #  # #   #   ()~*~() 
-#  # ###  ##  ###  ##  #  # #  # ###  	  ##   #   ##  #   #   (_)-(_) 
-#	focus = {
-#		id = SOV_consolidate_power
-#		icon = GFX_goal_generic_dangerous_deal
-#		x = 15
-#		y = 0
-#		relative_position_id = SOV_article_124
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			add_political_power = 90
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_consolidate_the_caucasus
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_power }
-#		x = -5
-#		y = 1
-#		relative_position_id = SOV_consolidate_power
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#
-#		completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 229
-#						state = 230
-#						state = 231
-#						state = 232
-#						state = 233
-#					}
-#					#229 230 231 232 233
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 229
-#						state = 230
-#						state = 231
-#						state = 232
-#						state = 233
-#					}
-#
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#				
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 229
-#						state = 230
-#						state = 231
-#						state = 232
-#						state = 233
-#					}
-#
-#				}
-#				add_extra_state_shared_building_slots = 1
-#				add_building_construction = {
-#					type = industrial_complex
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_consolidate_the_west
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_power }
-#		x = 0
-#		y = 1
-#		relative_position_id = SOV_consolidate_power
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 192
-#						state = 193
-#						state = 194
-#						state = 195
-#						state = 196
-#						state = 197
-#						state = 198
-#						state = 199
-#						state = 200
-#						state = 201
-#						state = 202
-#						state = 203
-#						state = 204
-#						state = 206
-#						state = 207
-#						state = 221
-#						state = 225						
-#						state = 226						
-#						state = 227
-#						state = 241
-#						state = 137
-#					}
-#
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 192
-#						state = 193
-#						state = 194
-#						state = 195
-#						state = 196
-#						state = 197
-#						state = 198
-#						state = 199
-#						state = 200
-#						state = 201
-#						state = 202
-#						state = 203
-#						state = 204
-#						state = 206
-#						state = 207
-#						state = 221
-#						state = 225						
-#						state = 226						
-#						state = 227
-#						state = 241
-#						state = 137
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#				
-#			random_owned_controlled_state = {
-#				limit = { 
-#					OR = {
-#						state = 192
-#						state = 193
-#						state = 194
-#						state = 195
-#						state = 196
-#						state = 197
-#						state = 198
-#						state = 199
-#						state = 200
-#						state = 201
-#						state = 202
-#						state = 203
-#						state = 204
-#						state = 206
-#						state = 207
-#						state = 221
-#						state = 225						
-#						state = 226						
-#						state = 227
-#						state = 241
-#						state = 137
-#					}
-#				}
-#				add_extra_state_shared_building_slots = 1
-#				add_building_construction = {
-#					type = industrial_complex
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		}
-#			
-#	}
-#
-#	focus = {
-#		id = SOV_consolidate_the_east
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_power }
-#		x = 4
-#		y = 1
-#		relative_position_id = SOV_consolidate_power
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 402
-#						state = 404
-#						state = 405
-#						state = 584
-#						state = 585
-#						state = 586
-#						state = 587
-#						state = 588
-#						state = 589
-#						state = 590						
-#						state = 732
-#						state = 742
-#						state = 40
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 402
-#						state = 404
-#						state = 405
-#						state = 584
-#						state = 585
-#						state = 586
-#						state = 587
-#						state = 588
-#						state = 589
-#						state = 590						
-#						state = 732
-#						state = 742
-#						state = 40
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#				
-#			random_owned_controlled_state = {
-#				limit = { 
-#					OR = {
-#						state = 402
-#						state = 404
-#						state = 405
-#						state = 584
-#						state = 585
-#						state = 586
-#						state = 587
-#						state = 588
-#						state = 589
-#						state = 590						
-#						state = 732
-#						state = 742
-#						state = 40
-#					}
-#				}
-#				add_extra_state_shared_building_slots = 1
-#				add_building_construction = {
-#					type = industrial_complex
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_sufi_stronghold
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_caucasus }
-#		x = -2
-#		y = 1
-#		relative_position_id = SOV_consolidate_the_caucasus
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			SOV_decrease_church_power = yes
-#			add_ideas = SOV_multi_religious_empire
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_independent_synod
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_caucasus }
-#		x = 0
-#		y = 1
-#		relative_position_id = SOV_consolidate_the_caucasus
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			SOV_decrease_church_power = yes
-#			add_political_power = 50
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_educate_the_masses_caucasus
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_caucasus }
-#		x = 2
-#		y = 3
-#		relative_position_id = SOV_consolidate_the_caucasus
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#				completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 229
-#						state = 230
-#						state = 231
-#						state = 232
-#						state = 233
-#					}
-#					#229 230 231 232 233
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 229
-#						state = 230
-#						state = 231
-#						state = 232
-#						state = 233
-#					}
-#
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_transcaucasian_republic
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_sufi_stronghold }
-#		prerequisite = { focus = SOV_independent_synod }
-#		prerequisite = { focus = SOV_educate_the_masses_caucasus }
-#		x = 0
-#		y = 1
-#		relative_position_id = SOV_independent_synod
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			country_event = { 
-#				id = NSB_Soviet_puppeting.1 hours = 2 random_hours = 1 
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_independent_synod_west
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_west }
-#		x = -1
-#		y = 1
-#		relative_position_id = SOV_consolidate_the_west
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			SOV_decrease_church_power = yes
-#			add_political_power = 50
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_educate_the_masses_west
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_west }
-#		x = 1
-#		y = 3
-#		relative_position_id = SOV_consolidate_the_west
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 259
-#						state = 192
-#						state = 193
-#						state = 194
-#						state = 195
-#						state = 196
-#						state = 197
-#						state = 198
-#						state = 199
-#						state = 200
-#						state = 201
-#						state = 202
-#						state = 203
-#						state = 204
-#						state = 206
-#						state = 207
-#						state = 221
-#						state = 225						
-#						state = 226						
-#						state = 227
-#						state = 241
-#						state = 137
-#					}
-#
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 259
-#						state = 192
-#						state = 193
-#						state = 194
-#						state = 195
-#						state = 196
-#						state = 197
-#						state = 198
-#						state = 199
-#						state = 200
-#						state = 201
-#						state = 202
-#						state = 203
-#						state = 204
-#						state = 206
-#						state = 207
-#						state = 221
-#						state = 225						
-#						state = 226						
-#						state = 227
-#						state = 241
-#						state = 137
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_free_rutenia
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_independent_synod_west }
-#		prerequisite = { focus = SOV_educate_the_masses_west}
-#		x = 0
-#		y = 1
-#		relative_position_id = SOV_independent_synod_west
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			country_event = { 
-#				id = NSB_Soviet_puppeting.2 hours = 2 random_hours = 1 
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_friendship_of_nations_university
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_educate_the_masses_west }
-#		prerequisite = { focus = SOV_educate_the_masses_caucasus }
-#		prerequisite = { focus = SOV_educate_the_masses_east }
-#		x = 0
-#		y = 4
-#		relative_position_id = SOV_educate_the_masses_west
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			add_research_slot = 1 #this might be too much
-#			add_to_variable = { SOV_defense_industry_research_speed_factor = 0.05 }
-#		}
-#	}
-#
-#
-#
-#focus = {
-#		id = SOV_independent_koranic_school
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_east }
-#		x = -1
-#		y = 1
-#		relative_position_id = SOV_consolidate_the_east
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			SOV_decrease_church_power = yes
-#			add_ideas = SOV_multi_religious_empire
-#			add_political_power = 50
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_educate_the_masses_east
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_consolidate_the_east }
-#		x = 1
-#		y = 3
-#		relative_position_id = SOV_consolidate_the_east
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 402
-#						state = 404
-#						state = 405
-#						state = 584
-#						state = 585
-#						state = 586
-#						state = 587
-#						state = 588
-#						state = 589
-#						state = 590						
-#						state = 732
-#						state = 742
-#						state = 40
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 0
-#					}
-#			
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 1
-#					instant_build = yes
-#				}
-#			}
-#		
-#			random_owned_controlled_state = {
-#				limit = {
-#					OR = {
-#						state = 402
-#						state = 404
-#						state = 405
-#						state = 584
-#						state = 585
-#						state = 586
-#						state = 587
-#						state = 588
-#						state = 589
-#						state = 590						
-#						state = 732
-#						state = 742
-#						state = 40
-#					}
-#					free_building_slots = {
-#						building = infrastructure
-#						size > 1
-#					}
-#
-#				}
-#				add_building_construction = {
-#					type = infrastructure
-#					level = 2
-#					instant_build = yes
-#				}
-#			}
-#		}
-#	}
-#
-#	focus = {
-#		id = SOV_free_bukharan_republic
-#		icon = GFX_goal_generic_dangerous_deal
-#		prerequisite = { focus = SOV_independent_koranic_school }
-#		prerequisite = { focus = SOV_educate_the_masses_east}
-#		x = 0
-#		y = 1
-#		relative_position_id = SOV_independent_koranic_school
-#		cost = 10
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available_if_capitulated = yes
-#		
-#		completion_reward = {
-#			country_event = { 
-#				id = NSB_Soviet_puppeting.3 hours = 2 random_hours = 1 	
-#			}
-#		}
-#	}
-#}
