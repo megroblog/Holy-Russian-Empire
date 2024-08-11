@@ -31,7 +31,7 @@ focus_tree = {
 	#MY
 	focus = { #SOV_cut_a_path_to_Europe
 		id = SOV_cut_a_path_to_Europe
-		icon = GFX_focus_usa_focus_on_europe
+		icon = GFX_SOV_cut_a_path_to_Europe
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
@@ -56,7 +56,7 @@ focus_tree = {
 
 	focus = { #SOV_the_stronghold_of_orthodoxy
 		id = SOV_the_stronghold_of_orthodoxy
-		icon = GFX_focus_GRE_an_orthodox_state
+		icon = GFX_SOV_the_stronghold_of_orthodoxy
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_STABILITY}
@@ -77,7 +77,7 @@ focus_tree = {
 
 	focus = { #SOV_convert_to_catholicism
 		id = SOV_convert_to_catholicism
-		icon = GFX_focus_generic_catholic_dominion
+		icon = GFX_SOV_convert_to_catholicism
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL}
@@ -86,7 +86,7 @@ focus_tree = {
 		mutually_exclusive = {focus = SOV_the_stronghold_of_orthodoxy}
 		
 		relative_position_id = SOV_cut_a_path_to_Europe
-		x = 2
+		x = 8
 		y = 1	
 		
 		completion_reward = {}
@@ -94,7 +94,7 @@ focus_tree = {
 
 	focus = { #SOV_the_memory_of_1917
 		id = SOV_the_memory_of_1917
-		icon = GFX_focus_FIN_keepers_of_the_baltic_countries
+		icon = GFX_SOV_the_memory_of_1917
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY}
@@ -127,7 +127,7 @@ focus_tree = {
 
 	focus = { #SOV_declare_yourself
 		id = SOV_declare_yourself
-		icon = GFX_focus_SOV_baltic_security
+		icon = GFX_SOV_cut_a_path_to_Europe
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -156,7 +156,7 @@ focus_tree = {
 
 	focus = { #SOV_to_return_to_its_former_greatness
 		id = SOV_to_return_to_its_former_greatness
-		icon = GFX_focus_generic_invade_finland
+		icon = GFX_SOV_cut_a_path_to_Europe
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -177,7 +177,7 @@ focus_tree = {
 
 	focus = { #SOV_russian_poles
 		id = SOV_russian_poles
-		icon = GFX_focus_POL_polish_revanchism
+		icon = GFX_SOV_cut_a_path_to_Europe
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -193,7 +193,7 @@ focus_tree = {
 
 	focus = { #SOV_return_tsar_grad
 		id = SOV_return_tsar_grad
-		icon = GFX_focus_TUR_the_montreux_convention
+		icon = GFX_SOV_return_tsar_grad
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -215,7 +215,7 @@ focus_tree = {
 
 	focus = { #SOV_put_pressure_on_turkey
 		id = SOV_put_pressure_on_turkey
-		icon = GFX_focus_TUR_misak_i_milli
+		icon = GFX_SOV_put_pressure_on_turkey
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -229,7 +229,7 @@ focus_tree = {
 
 	focus = { #SOV_liberate_the_balkan_slavs
 		id = SOV_liberate_the_balkan_slavs
-		icon = GFX_focus_BUL_free_balkan_states
+		icon = GFX_SOV_liberate_the_balkan_slavs
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -240,6 +240,36 @@ focus_tree = {
 		x = -1
 		y = 5
 	}
+	
+	focus = { #SOV_forest_leader
+		id = SOV_forest_leader
+		#icon = GFX_
+		cost = 10
+	
+		prerequisite = {focus = SOV_the_stronghold_of_orthodoxy}
+	
+		relative_position_id = SOV_the_stronghold_of_orthodoxy
+		x = 7
+		y = 1
+	
+		available = {
+			
+		}
+	
+		completion_reward = {	
+			add_political_power = 50
+			add_war_support = 0.05
+			add_command_power = 25
+			random_army_leader = {
+				limit = { is_field_marshal = no }
+				add_trait = { 
+					character = random
+					trait = ranger
+				}
+			}
+		}
+	}
+	
 
 ##    ##  #######      ######  ######## ######## ########     ########     ###     ######  ##    ## 
 ###   ## ##     ##    ##    ##    ##    ##       ##     ##    ##     ##   ## ##   ##    ## ##   ##  
