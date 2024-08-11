@@ -1,0 +1,180 @@
+HRE_nationalization_category = {
+
+	# Решение для национализации территорий SOV
+	SOV_prepare_population = {
+		#icon = generic_political_actions
+		priority = 100
+
+		allowed = {original_tag = SOV}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Poland
+				owns_state = 10
+				owns_state = 87
+				owns_state = 90
+				owns_state = 92
+				owns_state = 93
+				owns_state = 94
+				owns_state = 95
+				owns_state = 96
+				owns_state = 97
+				owns_state = 98
+				owns_state = 784 
+			}
+		}
+
+		cost = 250
+		fire_only_once = yes
+		days_remove = 90
+
+		remove_effect = {
+			set_country_flag = population_preparation_completed
+			custom_effect_tooltip = population_preparation_completed
+		}
+	}
+	
+	SOV_nationalize_polish_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		available = {has_country_flag = population_preparation_completed}
+
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {is_core_of = POL}
+				add_core_of = SOV
+			}
+		}
+
+		ai_will_do = {factor = 100}
+	}
+
+	# Решение для национализации территорий Германией
+	GER_nationalize_polish_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = GER}
+
+		visible = {
+			owns_state = 85
+			owns_state = 86
+			owns_state = 762
+			owns_state = 807
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {is_core_of = POL}
+				add_core_of = GRE
+			}
+		}
+
+		ai_will_do = {base = 100}
+	}
+
+	# Решение для национализации территорий Чехословакией
+	CZE_nationalize_polish_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = CZE}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {is_core_of = POL}
+				add_core_of = CZE
+			}
+		}
+
+		ai_will_do = {base = 100}
+	}
+
+	SOV_rename_istanbul = {
+		icon = generic_political_actions
+		
+		available = {controls_state = 797}
+		visible = {has_completed_focus = SOV_return_tsar_grad}
+		
+		fire_only_once = yes
+		cost = 25
+		
+		complete_effect = {
+			797 = {set_state_name = Tsargrad}
+			hidden_effect = {
+				set_province_name = {
+					id = 9833
+					name = Tsargrad
+				}
+			}
+		}
+	}
+}
+
+HRE_debug_category = {
+	HRE_clr_flags = {
+		icon = generic_political_actions
+
+		allowed = {is_debug = yes}
+
+		complete_effect = {
+			SOV = {
+				clr_country_flag = take_all_of_Poland
+				clr_country_flag = population_preparation_completed
+			}
+			GER = {
+				clr_country_flag = agreed_to_split
+				clr_country_flag = disagreed_to_split
+			}
+			CZE = {
+				clr_country_flag = agreed_to_split
+				clr_country_flag = disagreed_to_split
+			}
+		}
+	}
+
+	HRE_return_territories_to_Poland = {
+		icon = generic_political_actions
+
+		visible = {SOV = {any_controlled_state = {is_core_of = POL}}}
+
+		complete_effect = {
+			POL = {
+				every_core_state = {
+					transfer_state_to = POL
+				}
+			}
+			SOV = {
+				clr_country_flag = take_all_of_Poland
+			}
+			GER = {
+				clr_country_flag = agreed_to_split
+				clr_country_flag = disagreed_to_split
+			}
+			CZE = {
+				clr_country_flag = agreed_to_split
+				clr_country_flag = disagreed_to_split
+			}
+		}
+	}
+
+	HRE_event = {
+		icon = generic_political_actions
+
+		allowed = {is_debug = yes}
+
+		complete_effect = {
+			country_event = {id = HRE_event.1}
+		}
+	}
+}

@@ -1,0 +1,5 @@
+opinion_modifiers = {
+	sov_offers_to_split = {
+		value = 20
+	}
+}

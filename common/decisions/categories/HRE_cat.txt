@@ -1,0 +1,24 @@
+HRE_nationalization_category = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {
+		OR = {
+			original_tag = SOV
+			original_tag = GER
+			original_tag = CZE
+		}
+	}
+
+	visible = {SOV = {has_completed_focus = SOV_cut_a_path_to_Europe}}
+	visible_when_empty = yes
+}
+
+HRE_debug_category = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {is_debug = yes}
+}

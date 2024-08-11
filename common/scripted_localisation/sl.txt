@@ -1,0 +1,31 @@
+defined_text = {
+	name = GetResponseToProposal
+	text = {
+		trigger = {
+			FROM = {tag = GER}
+		}
+		localization_key = response_from_Germany
+	}
+	text = {
+		trigger = {
+			FROM = {tag = CZE}
+		}
+		localization_key = response_from_Czechoslovakia
+	}
+}
+
+defined_text = {
+	name = GetNegativeResponse
+	text = {
+		trigger = {
+			FROM = {tag = GER}
+		}
+		localization_key = negative_response_from_Germany
+	}
+	text = {
+		trigger = {
+			FROM = {tag = CZE}
+		}
+		localization_key = negative_response_from_Czechoslovakia
+	}
+}

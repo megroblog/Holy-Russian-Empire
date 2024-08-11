@@ -1,8 +1,10 @@
-version="1.14.7"
+version="1.0"
 tags={
-	"National Focuses"
 	"Alternative History"
 	"Events"
+	"National Focuses"
+	"Translation"
 }
-name="The Holy Russian Empire"
+name="The Holy Russian Impire"
+picture="Thumbnail.png"
 supported_version="1.14.7"
