@@ -31,7 +31,7 @@ focus_tree = {
 	#MY
 	focus = { #SOV_cut_a_path_to_Europe
 		id = SOV_cut_a_path_to_Europe
-		icon = GFX_SOV_cut_a_path_to_Europe
+		icon = GFX_focus_usa_focus_on_europe
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
@@ -56,7 +56,7 @@ focus_tree = {
 
 	focus = { #SOV_the_stronghold_of_orthodoxy
 		id = SOV_the_stronghold_of_orthodoxy
-		icon = GFX_SOV_the_stronghold_of_orthodoxy
+		icon = GFX_focus_GRE_an_orthodox_state
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_STABILITY}
@@ -77,7 +77,7 @@ focus_tree = {
 
 	focus = { #SOV_convert_to_catholicism
 		id = SOV_convert_to_catholicism
-		icon = GFX_SOV_convert_to_catholicism
+		icon = GFX_focus_generic_catholic_dominion
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL}
@@ -86,15 +86,22 @@ focus_tree = {
 		mutually_exclusive = {focus = SOV_the_stronghold_of_orthodoxy}
 		
 		relative_position_id = SOV_cut_a_path_to_Europe
-		x = 8
+		x = 12
 		y = 1	
 		
-		completion_reward = {}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = -0.05
+			hidden_effect = {
+				news_event = { id = HRE_event.10 }
+			}
+		}
 	}
 
 	focus = { #SOV_the_memory_of_1917
 		id = SOV_the_memory_of_1917
-		icon = GFX_SOV_the_memory_of_1917
+		icon = GFX_focus_FIN_keepers_of_the_baltic_countries
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY}
@@ -127,7 +134,7 @@ focus_tree = {
 
 	focus = { #SOV_declare_yourself
 		id = SOV_declare_yourself
-		icon = GFX_SOV_cut_a_path_to_Europe
+		icon = GFX_focus_SOV_baltic_security
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -156,7 +163,7 @@ focus_tree = {
 
 	focus = { #SOV_to_return_to_its_former_greatness
 		id = SOV_to_return_to_its_former_greatness
-		icon = GFX_SOV_cut_a_path_to_Europe
+		icon = GFX_focus_generic_develop_finland_silhouette
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -177,7 +184,7 @@ focus_tree = {
 
 	focus = { #SOV_russian_poles
 		id = SOV_russian_poles
-		icon = GFX_SOV_cut_a_path_to_Europe
+		icon = GFX_focus_POL_polish_revanchism
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -193,7 +200,7 @@ focus_tree = {
 
 	focus = { #SOV_return_tsar_grad
 		id = SOV_return_tsar_grad
-		icon = GFX_SOV_return_tsar_grad
+		icon = GFX_focus_TUR_the_montreux_convention
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -215,7 +222,7 @@ focus_tree = {
 
 	focus = { #SOV_put_pressure_on_turkey
 		id = SOV_put_pressure_on_turkey
-		icon = GFX_SOV_put_pressure_on_turkey
+		icon = GFX_focus_TUR_misak_i_milli
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -229,7 +236,7 @@ focus_tree = {
 
 	focus = { #SOV_liberate_the_balkan_slavs
 		id = SOV_liberate_the_balkan_slavs
-		icon = GFX_SOV_liberate_the_balkan_slavs
+		icon = GFX_focus_BUL_promote_bulgarian_nationalism
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -240,14 +247,52 @@ focus_tree = {
 		x = -1
 		y = 5
 	}
+
+	focus = { #Assemble_the_Senate
+		id = Assemble_the_Senate
+		icon = GFX_focus_NORDIC_mon_institution_2
+		cost = 10
+		relative_position_id = SOV_the_stronghold_of_orthodoxy
+		prerequisite = {focus = SOV_the_stronghold_of_orthodoxy}
+		x = 10
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_ideas = senate_assembled
+		}
+	}
+
+	focus = {
+		id = SOV_reward_chosen_generals
+		icon = GFX_focus_NORDIC_mon_institution_1
+		cost = 10
+		prerequisite = { focus = SOV_the_stronghold_of_orthodoxy }
+		relative_position_id = SOV_the_memory_of_1917
+		x = 12
+		y = 0
+		completion_reward = {	
+			add_political_power = 50
+			add_war_support = 0.05
+			add_command_power = 10
+			random_army_leader = {
+				add_trait = { 
+					character = random
+					trait = brilliant_strategist
+				}
+			}
+		}
+	}
+		
+
+
 	
 	focus = { #SOV_forest_leader
 		id = SOV_forest_leader
-		#icon = GFX_
 		cost = 10
 	
 		prerequisite = {focus = SOV_the_stronghold_of_orthodoxy}
-	
+		icon = GFX_focus_CHL_expand_the_forestry
 		relative_position_id = SOV_the_stronghold_of_orthodoxy
 		x = 7
 		y = 1
@@ -265,6 +310,164 @@ focus_tree = {
 				add_trait = { 
 					character = random
 					trait = ranger
+				}
+			}
+		}
+	}
+
+	focus = { #The_Great_Russian_Fleet
+		id = The_Great_Russian_Fleet
+		icon = GFX_focus_NORDIC_mon_airforce
+		prerequisite = {
+			focus = SOV_forest_leader
+		}
+		relative_position_id = SOV_forest_leader
+		cost = 10
+		x = -2
+		y = 1
+		completion_reward = {
+			navy_experience = 50
+			add_tech_bonus = {
+				name = naval_bonus
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+			add_tech_bonus = {
+				name = cruiser_bonus
+				bonus = 0.5
+				uses = 1
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				name = heavy_cruiser_bonus
+				bonus = 0.5
+				uses = 1
+				category = ca_tech
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { #developments_in_artillery
+		id = developments_in_artillery
+		icon = GFX_focus_NORDIC_mon_selector_materiel
+		prerequisite = {
+			focus = SOV_forest_leader
+		}
+		relative_position_id = SOV_forest_leader
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				name = artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = artillery
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = no
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { #Russian_Air_Force
+		id = Russian_Air_Force
+		icon = GFX_focus_NORDIC_mon_selector_navy
+		prerequisite = {
+			focus = SOV_forest_leader
+		}
+		relative_position_id = SOV_forest_leader
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			air_experience = 50
+			add_tech_bonus = {
+				name = air_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { #industrialization_program
+		id = industrialization_program
+		icon = GFX_focus_NORDIC_mon_civilian
+		cost = 10
+	
+		prerequisite = {focus = developments_in_artillery}
+		prerequisite = {focus = Russian_Air_Force}
+		prerequisite = {focus = The_Great_Russian_Fleet}
+		
+	
+		relative_position_id = SOV_forest_leader
+		x = 0
+		y = 2
+	
+		available = {
+			
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
 				}
 			}
 		}
