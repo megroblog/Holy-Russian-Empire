@@ -12,7 +12,6 @@ HRE_nationalization_category = {
 	}
 
 	visible = {SOV = {has_completed_focus = SOV_cut_a_path_to_Europe}}
-	visible_when_empty = yes
 }
 
 HRE_debug_category = {

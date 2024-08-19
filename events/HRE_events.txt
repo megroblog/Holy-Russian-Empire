@@ -125,30 +125,48 @@ country_event = { #ультиматум Польше
 	desc = HRE_event.4.d1
 	#picture = 
 
-	#TODO: раскоментировать строку ниже
-	#fire_only_once = yes
-	#is_triggered_only = yes
+	fire_only_once = yes
+	is_triggered_only = yes
 
-	#trigger = {
-	#	AND = {
-	#		GER = {
-	#			OR = {
-	#				has_country_flag = agreed_to_split
-	#				has_country_flag = disagreed_to_split
-	#			}
-	#		}
-	#		CZE = {
-	#			OR = {
-	#				has_country_flag = agreed_to_split
-	#				has_country_flag = disagreed_to_split
-	#			}
-	#		}
-	#	}
-	#}
+	trigger = {
+		AND = {
+			GER = {
+				OR = {
+					has_country_flag = agreed_to_split
+					has_country_flag = disagreed_to_split
+				}
+			}
+			CZE = {
+				OR = {
+					has_country_flag = agreed_to_split
+					has_country_flag = disagreed_to_split
+				}
+			}
+		}
+	}
 
 	option = {
 		ai_chance = {base = 100}
 		name = HRE_event.4.a
+		IF = {
+			limit = {
+				AND = {
+					GER = {
+						OR = {
+							has_country_flag = agreed_to_split
+							has_country_flag = disagreed_to_split
+						}
+					}
+					CZE = {
+						OR = {
+							has_country_flag = agreed_to_split
+							has_country_flag = disagreed_to_split
+						}
+					}
+				}
+			}
+			log = "[ROOT.GetName]: сработало"
+		}
 		IF = {
 			limit = {GER = {has_country_flag = agreed_to_split}}
 			GER = {

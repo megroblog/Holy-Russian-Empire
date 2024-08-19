@@ -296,11 +296,7 @@ focus_tree = {
 		relative_position_id = SOV_the_stronghold_of_orthodoxy
 		x = 7
 		y = 1
-	
-		available = {
-			
-		}
-	
+
 		completion_reward = {	
 			add_political_power = 50
 			add_war_support = 0.05

@@ -1,7 +1,12 @@
 {
+<<<<<<< Updated upstream
     "hoi4ModUtilities.modFile": "C:\\Users\\Admin\\Documents\\Project 1\\Holy-Russian-Empire",
+=======
+    "hoi4ModUtilities.modFile": "D:\\mods HOI4\\other_mods\\Holy-Russian-Empire\\descriptor.mod\\Paradox Interactive\\Hearts of Iron IV\\mod\\TheHolyRussianEmpire",
+>>>>>>> Stashed changes
     "cSpell.words": [
         "Царьград"
     ],
-    "hoi4ModUtilities.previewLocalisation": "Russian"
+    "hoi4ModUtilities.previewLocalisation": "Russian",
+    "hoi4ModUtilities.installPath": "D:\\Programs\\steam\\steamapps\\common\\Hearts of Iron IV"
 }

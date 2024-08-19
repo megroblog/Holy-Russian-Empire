@@ -14,19 +14,4 @@ spriteTypes = {
         name = "GFX_SOV_to_return_to_its_former_greatness"
         textureFile = "gfx/interface/goals/SOV_to_return_to_its_former_greatness.dds"
     }
-
-    spriteType = {
-        name = "GFX_SOV_to_return_to_its_former_greatness"
-        textureFile = "gfx/interface/goals/SOV_to_return_to_its_former_greatness.dds"
-    }
-    
-    spriteType = {
-        name = "GFX_SOV_to_return_to_its_former_greatness"
-        textureFile = "gfx/interface/goals/SOV_to_return_to_its_former_greatness.dds"
-    }
-
-    spriteType = {
-        name = "GFX_SOV_to_return_to_its_former_greatness"
-        textureFile = "gfx/interface/goals/SOV_to_return_to_its_former_greatness.dds"
-    }
 }
