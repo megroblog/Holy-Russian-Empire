@@ -1,0 +1,3 @@
+SOV_HRE
+color = rgb { 255 73 121 }
+	color_ui = rgb { 255 73 121 }
