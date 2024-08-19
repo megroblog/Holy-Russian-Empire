@@ -31,7 +31,7 @@ focus_tree = {
 	#MY
 	focus = { #SOV_cut_a_path_to_Europe
 		id = SOV_cut_a_path_to_Europe
-		icon = GFX_focus_usa_focus_on_europe
+		icon = GFX_focus_rom_royal_dictatorship
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
@@ -47,10 +47,10 @@ focus_tree = {
 		y = 1
 		
 		completion_reward = {
+			set_cosmetic_tag = SOV_HRE
 			unlock_decision_category_tooltip = HRE_nationalization_category
-			add_political_power = 75
-			add_war_support = 0.1
-			add_stability = 0.1
+			SOV = {country_event = {id = HRE_event.1}}
+
 		}
 	}
 
@@ -62,46 +62,44 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_STABILITY}
 
 		prerequisite = {focus = SOV_cut_a_path_to_Europe}
-		mutually_exclusive = {focus = SOV_Convert_to_Catholicism}
+		mutually_exclusive = {focus = SOV_convert_to_catholicism}
 		
 		relative_position_id = SOV_cut_a_path_to_Europe
 		x = -2
 		y = 1
 		
 		completion_reward = {
-			add_political_power = 10
-			add_war_support = -0.05
-			add_stability = 0.05
+			SOV = {country_event = {id = HRE_event.2}}
 		}
 	}
 
-	focus = { #SOV_convert_to_catholicism
-		id = SOV_convert_to_catholicism
-		icon = GFX_focus_generic_catholic_dominion
-		cost = 10
-		
-		search_filters = {FOCUS_FILTER_POLITICAL}
-
-		prerequisite = {focus = SOV_cut_a_path_to_Europe}
-		mutually_exclusive = {focus = SOV_the_stronghold_of_orthodoxy}
-		
-		relative_position_id = SOV_cut_a_path_to_Europe
-		x = 12
-		y = 1	
-		
-		completion_reward = {
-			add_political_power = 50
-			add_stability = 0.05
-			add_war_support = -0.05
-			hidden_effect = {
-				news_event = { id = HRE_event.10 }
-			}
-		}
-	}
+	#focus = { #SOV_convert_to_catholicism
+	#	id = SOV_convert_to_catholicism
+	#	icon = GFX_focus_generic_catholic_dominion
+	#	cost = 10
+	#	
+	#	search_filters = {FOCUS_FILTER_POLITICAL}
+	#
+	#	prerequisite = {focus = SOV_cut_a_path_to_Europe}
+	#	mutually_exclusive = {focus = SOV_the_stronghold_of_orthodoxy}
+	#	
+	#	relative_position_id = SOV_cut_a_path_to_Europe
+	#	x = 12
+	#	y = 1	
+	#	
+	#	completion_reward = {
+	#		add_political_power = 50
+	#		add_stability = 0.05
+	#		add_war_support = -0.05
+	#		hidden_effect = {
+	#			news_event = { id = HRE_event.10 }
+	#		}
+	#	}
+	#}
 
 	focus = { #SOV_the_memory_of_1917
 		id = SOV_the_memory_of_1917
-		icon = GFX_focus_FIN_keepers_of_the_baltic_countries
+		icon = GFX_focus_generic_monarchy_1
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY}
@@ -113,6 +111,7 @@ focus_tree = {
 		y = 2
 		
 		completion_reward = {
+			SOV = {country_event = {id = HRE_event.3}}
 			hidden_effect = {
 				every_state = {
 					limit = {
@@ -146,6 +145,7 @@ focus_tree = {
 		y = 3
 
 		completion_reward = {
+			
 			create_wargoal = {
 				type = annex_everything
 				target = EST
@@ -158,12 +158,13 @@ focus_tree = {
 				type = annex_everything
 				target = LIT
 			}
+			SOV = {country_event = {id = HRE_event.4}}
 		}
 	}
 
 	focus = { #SOV_to_return_to_its_former_greatness
 		id = SOV_to_return_to_its_former_greatness
-		icon = GFX_focus_generic_develop_finland_silhouette
+		icon = GFX_focus_generic_invade_finland
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -175,6 +176,7 @@ focus_tree = {
 		y = 3
 
 		completion_reward = {
+			SOV = {country_event = {id = HRE_event.40}}
 			create_wargoal = {
 				type = annex_everything
 				target = FIN
@@ -182,25 +184,26 @@ focus_tree = {
 		}
 	}
 
+
 	focus = { #SOV_russian_poles
 		id = SOV_russian_poles
 		icon = GFX_focus_POL_polish_revanchism
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		prerequisite = {focus = SOV_the_memory_of_1917}
-		
+	
+		prerequisite = {focus = SOV_the_memory_of_1917 }
 		relative_position_id = SOV_cut_a_path_to_Europe
 		x = 0
 		y = 3
-		
-		completion_reward = {SOV = {country_event = {id = HRE_event.1}}}
-	}
-
-	focus = { #SOV_return_tsar_grad
-		id = SOV_return_tsar_grad
-		icon = GFX_focus_TUR_the_montreux_convention
+		completion_reward = {
+			set_global_flag = soglashenie
+			SOV = {country_event = {id = HRE_event.11 days = 1}}
+		}
+	}	
+	focus = { #владыка чёрного моря
+		id = SOV_Preparing_for_the_great_plan
+		icon = GFX_focus_SOV_merge_plants
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -214,34 +217,58 @@ focus_tree = {
 		y = 4
 
 		completion_reward = {
+			SOV = {country_event = {id = HRE_event.62}}
+		}
+	}
+	focus = { #SOV_return_tsar_grad
+		id = SOV_return_tsar_grad
+		icon = GFX_focus_TUR_the_montreux_convention
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+
+		prerequisite = {focus = SOV_Preparing_for_the_great_plan}
+	
+		
+		relative_position_id = SOV_cut_a_path_to_Europe
+		x = -3
+		y = 5
+
+		completion_reward = {
 			797 = {add_claim_by = SOV}
-			TUR = {country_event = {id = HRE_event.7}}
+			TUR = {country_event = {id = HRE_event.7 days = 1}}
 		}
 		
 	}
 
 	focus = { #SOV_put_pressure_on_turkey
 		id = SOV_put_pressure_on_turkey
-		icon = GFX_focus_TUR_misak_i_milli
+		icon = GFX_focus_generic_attack_turkey
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
-
+		completion_reward = {
+			TUR = {country_event = {id = HRE_event.31 days = 1}}
+		}
 		prerequisite = {focus = SOV_return_tsar_grad}
-		
 		relative_position_id = SOV_cut_a_path_to_Europe
-		x = -3
-		y = 5
+		x = -4
+		y = 6
+		available = {
+			has_global_flag = perehod
+		}
 	}
 
 	focus = { #SOV_liberate_the_balkan_slavs
 		id = SOV_liberate_the_balkan_slavs
-		icon = GFX_focus_BUL_promote_bulgarian_nationalism
+		icon = GFX_focus_BUL_oppose_the_royal_dictatorship
 		cost = 10
-		
+		completion_reward = {
+			BUL = {country_event = {id = HRE_event.41}}
+		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 
-		prerequisite = {focus = SOV_return_tsar_grad}
+		prerequisite = {focus = SOV_Preparing_for_the_great_plan}
 		
 		relative_position_id = SOV_cut_a_path_to_Europe
 		x = -1
@@ -253,13 +280,12 @@ focus_tree = {
 		icon = GFX_focus_NORDIC_mon_institution_2
 		cost = 10
 		relative_position_id = SOV_the_stronghold_of_orthodoxy
-		prerequisite = {focus = SOV_the_stronghold_of_orthodoxy}
+		prerequisite = {focus = SOV_restoration_efforts}
 		x = 10
 		y = 1
 		completion_reward = {
 			add_political_power = 100
 			add_stability = 0.05
-			add_ideas = senate_assembled
 		}
 	}
 
@@ -267,7 +293,7 @@ focus_tree = {
 		id = SOV_reward_chosen_generals
 		icon = GFX_focus_NORDIC_mon_institution_1
 		cost = 10
-		prerequisite = { focus = SOV_the_stronghold_of_orthodoxy }
+		prerequisite = { focus = SOV_restoration_efforts }
 		relative_position_id = SOV_the_memory_of_1917
 		x = 12
 		y = 0
@@ -291,7 +317,7 @@ focus_tree = {
 		id = SOV_forest_leader
 		cost = 10
 	
-		prerequisite = {focus = SOV_the_stronghold_of_orthodoxy}
+		prerequisite = {focus = SOV_restoration_efforts}
 		icon = GFX_focus_CHL_expand_the_forestry
 		relative_position_id = SOV_the_stronghold_of_orthodoxy
 		x = 7
@@ -313,12 +339,15 @@ focus_tree = {
 
 	focus = { #The_Great_Russian_Fleet
 		id = The_Great_Russian_Fleet
-		icon = GFX_focus_NORDIC_mon_airforce
+		icon = GFX_focus_NORDIC_mon_selector_navy
 		prerequisite = {
 			focus = SOV_forest_leader
 		}
 		relative_position_id = SOV_forest_leader
 		cost = 10
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		x = -2
 		y = 1
 		completion_reward = {
@@ -368,6 +397,9 @@ focus_tree = {
 		}
 		relative_position_id = SOV_forest_leader
 		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		x = 0
 		y = 1
 		completion_reward = {
@@ -399,12 +431,15 @@ focus_tree = {
 
 	focus = { #Russian_Air_Force
 		id = Russian_Air_Force
-		icon = GFX_focus_NORDIC_mon_selector_navy
+		icon = GFX_focus_NORDIC_mon_airforce
 		prerequisite = {
 			focus = SOV_forest_leader
 		}
 		relative_position_id = SOV_forest_leader
 		cost = 10
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
 		x = 2
 		y = 1
 		completion_reward = {
@@ -435,7 +470,7 @@ focus_tree = {
 		id = industrialization_program
 		icon = GFX_focus_NORDIC_mon_civilian
 		cost = 10
-	
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		prerequisite = {focus = developments_in_artillery}
 		prerequisite = {focus = Russian_Air_Force}
 		prerequisite = {focus = The_Great_Russian_Fleet}
@@ -463,6 +498,302 @@ focus_tree = {
 				add_building_construction = {
 					type = industrial_complex
 					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_ultimatum_to_bulgaria
+		icon = GFX_focus_generic_attack_bulgaria
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_liberate_the_balkan_slavs }
+		
+		relative_position_id = SOV_liberate_the_balkan_slavs
+		x = 1
+		y = 1
+		available = {
+			has_global_flag = bolgarka
+		}
+		completion_reward = {
+		BUL = {country_event = { id = HRE_event.44 }}
+		}
+	}
+
+	focus = { #владыка чёрного моря
+		id = SOV_The_lord_of_the_Black_Sea
+		icon = GFX_focus_generic_black_sea_focus
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+
+		prerequisite = {focus = SOV_partition_of_romania}
+		
+		relative_position_id = SOV_partition_of_romania
+		x = 0
+		y = 1
+
+		completion_reward = {
+			SOV = {country_event = {id = HRE_event.61}}
+		}
+	}
+	focus = {
+		id = SOV_partition_of_romania
+		icon = GFX_focus_generic_attack_romania
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_Preparing_for_the_great_plan }
+		prerequisite = { focus = SOV_liberate_the_balkan_slavs }
+		prerequisite = { focus = SOV_return_tsar_grad }
+		
+		relative_position_id = SOV_Preparing_for_the_great_plan
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			ROM = {country_event = {id = HRE_event.50}}
+			add_state_claim = 46 # Бессарабия
+			add_state_claim = 79 # Молдавия
+			add_state_claim = 46 # Мунтения
+			add_state_claim = 77 # Добруджа
+			
+			
+			hidden_effect = {
+				country_event = { id = soviet.100 days = 1 } # Событие для раздела Румынии
+			}
+			
+			add_political_power = 50
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = SOV_end_albanian_dictatorship
+		icon = GFX_focus_ITA_albanian_fascist_militia
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		
+		relative_position_id = SOV_partition_of_romania
+		x = 0
+		y = 3
+		
+		completion_reward = {
+			ALB = {country_event = {id = HRE_event.58 days = 1}}
+			add_war_support = 0.05
+			add_political_power = 25
+			
+			hidden_effect = {
+				add_state_claim = 44 # Албания
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_The_Byzantine_question
+		icon = GFX_focus_generic_attack_greece
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		
+		relative_position_id = SOV_partition_of_romania
+		x = 1
+		y = 2
+		
+		completion_reward = {
+			GRE = {country_event = { id = HRE_event.55 }}
+			add_war_support = 0.05
+			add_political_power = 50
+			
+			hidden_effect = {
+				add_state_claim = 47 # Фракия
+				add_state_claim = 185 # Македония
+				add_state_claim = 731 # Эпир
+			}
+		}
+	}
+	focus = {
+		id = SOV_Liberate_the_Western_Slavs
+		icon = GFX_focus_YUG_dissolve_serbia
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		
+		relative_position_id = SOV_partition_of_romania
+		x = -1
+		y = 2
+		
+		completion_reward = {
+			YUG = {country_event = {id = HRE_event.53}}
+			add_war_support = 0.05
+			add_political_power = 50
+			
+			hidden_effect = {
+				add_state_claim = 109 # Сербия
+				add_state_claim = 103 # Словения
+				add_state_claim = 104 # Босния
+				add_state_claim = 163 # Черногория
+				add_state_claim = 106 # Македония
+			}
+		}
+	}
+	focus = {
+		id = SOV_End_Italian_Fascism
+		icon = GFX_focus_SWI_fortify_border_with_italy
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_end_albanian_dictatorship }
+		
+		relative_position_id = SOV_partition_of_romania
+		x = 0
+		y = 4
+		
+		completion_reward = {
+			ITA = {country_event = {id = HRE_event.63 days = 1}}
+			add_political_power = 10
+			
+			hidden_effect = {
+				add_state_claim = 2 # Пьемонт
+				add_state_claim = 159 # Венеция
+				add_state_claim = 158 # Тоскана
+				add_state_claim = 157 # Лацио
+			}
+		}
+	}
+	focus = {
+		id = SOV_demand_mediterranean_colonies
+		icon = GFX_focus_generic_africa_naval
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_End_Italian_Fascism }
+		
+		relative_position_id = SOV_End_Italian_Fascism
+		x = 0
+		y = 1
+		
+		completion_reward = {
+			add_political_power = 10
+			
+			ENG = {country_event = {id = HRE_event.66 days = 1}}
+			FRA = {country_event = {id = HRE_event.69 days = 1}}
+			hidden_effect = {
+				add_state_claim = 446 # Александрия
+				add_state_claim = 447 # Каир
+				add_state_claim = 448 # Триполитания
+				add_state_claim = 449 # Киренаика
+				add_state_claim = 450 # Западная пустыня
+				add_state_claim = 451 # Верхний Египет
+				add_state_claim = 452 # Синай
+				add_state_claim = 453 # Палестина
+				add_state_claim = 454 # Иордания
+				add_state_claim = 459 # Тунис
+				add_state_claim = 460 # Алжир
+				add_state_claim = 461 # Константина
+				add_state_claim = 462 # Оран
+			}
+		}
+	}
+	focus = {
+		id = SOV_ultimatum_to_spain
+		icon = GFX_focus_generic_free_iberia
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		
+		prerequisite = { focus = SOV_demand_mediterranean_colonies }
+		
+		relative_position_id = SOV_demand_mediterranean_colonies
+		x = 0
+		y = 1
+		
+		completion_reward = {
+			SPR = {country_event = {id = HRE_event.72 days = 1}}
+			add_political_power = 15
+			
+			hidden_effect = {
+				add_state_claim = 165 # Каталония
+				add_state_claim = 166 # Арагон
+				add_state_claim = 167 # Валенсия
+				add_state_claim = 168 # Мурсия
+				add_state_claim = 169 # Андалусия
+			}
+		}
+	}
+	focus = {
+		id = SOV_mediterranean_dominance
+		icon = GFX_focus_generic_mediterranean_sea_focus
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		prerequisite = { focus = SOV_ultimatum_to_spain }
+		completion_reward = {
+		country_event = { id = HRE_event.75 }}
+		relative_position_id = SOV_ultimatum_to_spain
+		x = 0
+		y = 1
+		
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = SOV_restoration_efforts
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		
+		prerequisite = { focus = SOV_cut_a_path_to_Europe }
+		relative_position_id = SOV_cut_a_path_to_Europe
+		x = 2
+		y = 1
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
 					instant_build = yes
 				}
 			}

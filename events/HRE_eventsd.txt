@@ -1,0 +1,2370 @@
+add_namespace = HRE_event
+#прорубить путь в европу
+country_event = {
+	id = HRE_event.1
+	title = HRE_event.1.t
+	desc = HRE_event.1.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.1.a
+		add_political_power = 75
+		add_war_support = 0.1
+		add_stability = 0.1
+	}
+}
+# Оплот Православия
+country_event = {
+	id = HRE_event.2
+	title = HRE_event.2.t
+	desc = HRE_event.2.d
+	picture = GFX_report_event_orthodox_christian_cross
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.2.a
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+}
+# Память о 1917 году
+country_event = {
+	id = HRE_event.3
+	title = HRE_event.3.t
+	desc = HRE_event.3.d
+	picture = GFX_report_event_russian_revolution
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.3.a
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+
+# Заявить о себе
+country_event = {
+	id = HRE_event.4
+	title = HRE_event.4.t
+	desc = HRE_event.4.d
+	picture = GFX_report_event_soviet_propaganda
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.4.a
+		add_political_power = 100
+		add_stability = 0.05
+		add_war_support = 0.1
+	}
+}
+
+# Ультиматум Турции по Стамбулу
+country_event = {
+    id = HRE_event.7
+    title = HRE_event.7.t
+    desc = HRE_event.7.d
+    #picture = GFX_report_event_soviet_soldiers_tank
+
+    is_triggered_only = yes
+    
+    option = { #Отдать Стамбул
+        name = HRE_event.7.a
+        SOV = {
+            transfer_state = 797
+            country_event = {id = HRE_event.8}
+        }
+    }
+
+    option = { #Отказаться
+        name = HRE_event.7.b
+        SOV = {
+            create_wargoal = {
+                type = take_state_focus
+                target = TUR
+                generator = {797}
+            }
+            country_event = {id = HRE_event.9}
+        }
+    }
+}
+
+# Турция согласилась отдать Стамбул
+country_event = {
+    id = HRE_event.8
+    title = HRE_event.8.t
+    desc = HRE_event.8.d
+    picture = GFX_report_event_soviet_soldiers_tank
+
+    is_triggered_only = yes
+
+    option = {
+		name = HRE_event.8.a
+		set_global_flag = perehod
+		effect_tooltip = {transfer_state = 797}
+	}
+}
+
+# Турция отказалась отдать Стамбул
+country_event = {
+    id = HRE_event.9
+    title = HRE_event.9.t
+    desc = HRE_event.9.d
+    picture = GFX_report_event_soviet_soldiers_tank
+
+    is_triggered_only = yes
+
+    option = {
+		name = HRE_event.9.a
+		effect_tooltip = {
+			create_wargoal = {
+                type = take_claimed_state
+                target = TUR
+                generator = {797}
+            }
+		}
+	}
+}
+country_event = {
+	id = HRE_event.10
+	title = event_title.10.t
+	desc = event_desc.10.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.10.a
+		add_political_power = 50
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+}
+#выполнение фокуса
+country_event = {
+	id = HRE_event.11
+	title = HRE_event.11.t
+	desc = HRE_event.11.d
+	picture = GFX_report_event_molotov_ribbentrop_pact
+	
+	is_triggered_only = yes # Добавлено условие срабатывания
+
+	option = {
+		name = HRE_event.11.a
+		GER = { country_event = { id = HRE_event.12 days = 1 } }
+		CZE = { country_event = { id = HRE_event.17 days = 1 } }
+		SOV = { country_event = { id = HRE_event.27 days = 1 } }
+	}
+	option = {
+		name = HRE_event.11.b
+		POL = {country_event = {id = HRE_event.24 days = 1}}
+	}
+	option = {
+		name = HRE_event.11.c
+		POL = {country_event = {id = HRE_event.37}}
+	}
+}
+
+
+# Ивент о предложении Германии
+country_event = {
+	id = HRE_event.12
+	title = HRE_event.12.t
+	desc = HRE_event.12.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.12.a
+		SOV = { country_event = { id = HRE_event.13 days = 1 } }
+	}
+
+	option = {
+		name = HRE_event.12.b
+		ai_chance = { base = 0 }
+		SOV = { country_event = { id = HRE_event.14 days = 1 } }
+	}
+}
+
+# Принятие Германией
+country_event = {
+	id = HRE_event.13
+	title = HRE_event.13.t
+	desc = HRE_event.13.d
+	picture = GFX_report_event_hitler_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.13.a
+		POL = {country_event = {id = HRE_event.21}}
+		SOV = {
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_opinion_modifier = { target = GER modifier = large_increase }
+		}
+		GER = {
+			add_opinion_modifier = { target = SOV modifier = large_increase }
+		}
+	}
+}
+
+# Отказ Германии
+country_event = {
+	id = HRE_event.14
+	title = HRE_event.14.t
+	desc = HRE_event.14.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.14.a
+		SOV = {
+			add_political_power = -25
+			add_stability = -0.03
+			add_war_support = 0.03
+			add_opinion_modifier = { target = GER modifier = medium_decrease }
+		}
+		GER = {
+			add_opinion_modifier = { target = SOV modifier = medium_decrease }
+		}
+	}
+}
+
+# Согласие Чехословакии
+country_event = {
+	id = HRE_event.15
+	title = HRE_event.15.t
+	desc = HRE_event.15.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.15.a
+		SOV = {
+			POL = {country_event = {id = HRE_event.18}}
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_opinion_modifier = { target = CZE modifier = large_increase }
+		}
+		CZE = {
+			add_opinion_modifier = { target = SOV modifier = large_increase }
+		}
+	}
+}
+
+# Отказ Чехословакии
+country_event = {
+	id = HRE_event.16
+	title = HRE_event.16.t
+	desc = HRE_event.16.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.16.a
+		SOV = {
+			add_political_power = -25
+			add_stability = -0.03
+			add_war_support = 0.03
+			add_opinion_modifier = { target = CZE modifier = medium_decrease }
+		}
+		CZE = {
+			add_opinion_modifier = { target = SOV modifier = medium_decrease }
+		}
+	}
+}
+
+# Ивент о предложении Чехословакии
+country_event = {
+	id = HRE_event.17
+	title = HRE_event.17.t
+	desc = HRE_event.17.d
+	picture = GFX_report_event_generic_meeting
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.17.a
+		SOV = { country_event = { id = HRE_event.15 days = 1 } }
+	}
+
+	option = {
+		name = HRE_event.17.b
+		ai_chance = { base = 0 }
+		SOV = { country_event = { id = HRE_event.16 days = 1 } }
+	}
+}
+#ультиматум от чеха поляку
+country_event = {
+	id = HRE_event.18
+	title = HRE_event.18.t
+	desc = HRE_event.18.d
+	picture = GFX_report_event_poland_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.18.a
+		ai_chance = {
+			base = 50
+		}
+		CZE = {country_event = {id = HRE_event.19}}
+	}
+
+	option = {
+		name = HRE_event.18.b
+		ai_chance = {
+			base = 50
+		}
+		CZE = {country_event = {id = HRE_event.20}}
+	}
+}
+#чеху отказал поляк
+country_event = {
+	id = HRE_event.19
+	title = HRE_event.19.t
+	desc = HRE_event.19.d
+	picture = GFX_report_event_polish_tanks
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.19.a
+		ai_chance = { base = 90 }
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			expire = 90
+			generator = {88 89 91}
+		} 
+		add_stability = +0.10
+		add_war_support = +0.10
+	}
+
+	option = {
+		name = HRE_event.19.b
+		ai_chance = { base = 10 }
+		add_political_power = -50
+		add_stability = -0.10
+		add_war_support = -0.10
+	}
+}
+#поляк принял
+country_event = {
+	id = HRE_event.20
+	title = HRE_event.20.t
+	desc = HRE_event.20.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.20.a
+		88 = { transfer_state_to = CZE }
+		89 = { transfer_state_to = CZE }
+		91 = { transfer_state_to = CZE }
+	}
+}
+
+#ультиматум от гермы поляку
+country_event = {
+	id = HRE_event.21
+	title = HRE_event.21.t
+	desc = HRE_event.21.d
+	picture = GFX_report_event_german_polish_border
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 50
+		}
+		name = HRE_event.21.a
+		GER = {country_event = {id = HRE_event.22}}
+	}
+
+	option = {
+		name = HRE_event.21.b
+		ai_chance = {
+			base = 50
+		}
+		GER = {country_event = {id = HRE_event.23}}
+	}
+}
+#Польша отказала Германии
+country_event = {
+	id = HRE_event.22
+	title = HRE_event.22.t
+	desc = HRE_event.22.d
+	picture = GFX_report_event_german_troops_poland
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.22.a
+		ai_chance = { base = 90 }
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			expire = 90
+			generator = {807 85 86 762} # Изменены номера штатов на соответствующие польские территории
+		} 
+		add_stability = +0.10
+		add_war_support = +0.15 # Увеличена поддержка войны
+	}
+
+	option = {
+		name = HRE_event.22.b
+		ai_chance = { base = 10 }
+		add_political_power = -75 # Увеличен штраф политической силы
+		add_stability = -0.15 # Увеличен штраф стабильности
+		add_war_support = -0.15 # Увеличен штраф поддержки войны
+	}
+}
+
+#Польша приняла требования Германии
+country_event = {
+	id = HRE_event.23
+	title = HRE_event.23.t
+	desc = HRE_event.23.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.23.a
+		807 = { transfer_state_to = GER } 
+		85 = { transfer_state_to = GER }
+		86 = { transfer_state_to = GER }
+		762 = { transfer_state_to = GER }
+		add_political_power = 100 
+		add_stability = +0.05 
+	}
+}
+#ультиматум от совка поляку
+country_event = {
+	id = HRE_event.24
+	title = HRE_event.24.t
+	desc = HRE_event.24.d
+	picture = GFX_report_event_soviet_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.24.a
+		ai_chance = {
+			base = 50
+		}
+		SOV = {country_event = {id = HRE_event.26}}
+	}
+
+	option = {
+		name = HRE_event.24.b
+		ai_chance = {
+			base = 50
+		}
+		SOV = { country_event = { id = HRE_event.25 } }
+	}
+}
+
+#Польша приняла требования СОВКА
+country_event = {
+	id = HRE_event.25
+	title = HRE_event.25.t
+	desc = HRE_event.25.d
+	picture = GFX_report_event_soviet_finnish_pact
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.25.a
+		10 = { transfer_state_to = SOV } 
+		96 = { transfer_state_to = SOV } 
+		95 = { transfer_state_to = SOV }
+		94 = { transfer_state_to = SOV }
+		93 = { transfer_state_to = SOV }
+		92 = { transfer_state_to = SOV }
+		90 = { transfer_state_to = SOV }
+		87 = { transfer_state_to = SOV }
+		98 = { transfer_state_to = SOV }
+		97 = { transfer_state_to = SOV }
+		784 = { transfer_state_to = SOV }
+		add_political_power = 100 
+		add_stability = +0.05 
+	}
+}
+#Польша отказала сОвку
+country_event = {
+	id = HRE_event.26
+	title = HRE_event.26.t
+	desc = HRE_event.26.d
+	picture = GFX_report_event_soviet_tanks
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.26.a
+		ai_chance = { base = 90 }
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			expire = 90
+			generator = {96 95 94 93 92 90 87 98 97 784} # Изменены номера штатов на соответствующие польские территории
+		} 
+		add_stability = +0.10
+		add_war_support = +0.15 # Увеличена поддержка войны
+	}
+
+	option = {
+		name = HRE_event.26.b
+		ai_chance = { base = 10 }
+		add_political_power = -75 # Увеличен штраф политической силы
+		add_stability = -0.15 # Увеличен штраф стабильности
+		add_war_support = -0.15 # Увеличен штраф поддержки войны
+	}
+}
+# начать раздел поляка
+country_event = {
+	id = HRE_event.27
+	title = HRE_event.27.t
+	desc = HRE_event.27.d
+	picture = GFX_report_event_molotov_ribbentrop_pact
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.27.a
+		SOV = {
+			POL = {country_event = {id = HRE_event.24}}
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+}
+country_event = {
+    id = HRE_event.28
+    title = HRE_event.28.t
+    desc = HRE_event.28.d
+    picture = GFX_report_event_german_speech
+
+    fire_only_once = yes
+    mean_time_to_happen = {
+        days = 5
+    }
+    trigger = {
+        tag = GER
+		has_global_flag = soglashenie
+        OR = {
+        10 = { is_controlled_by = GER }
+        10 = { is_owned_by = GER }
+        }
+        OR = {
+        POL = { has_capitulated = yes }
+        POL = { exists = no }
+        }
+    }
+
+    option = {
+        name = HRE_event.28.a
+		if = {
+            limit = {
+                POL = { exists = no }
+				98 = { is_owned_by = GER }
+            }
+            98 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				87 = { is_owned_by = GER }
+            }
+            87 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				10 = { is_owned_by = GER }
+            }
+            10 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				90 = { is_owned_by = GER }
+            }
+            90 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				92 = { is_owned_by = GER }
+            }
+            92 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				93 = { is_owned_by = GER }
+            }
+            93 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				94 = { is_owned_by = GER }
+            }
+            94 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				95 = { is_owned_by = GER }
+            }
+            95 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				96 = { is_owned_by = GER }
+            }
+            96 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				97 = { is_owned_by = GER }
+            }
+            97 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				784 = { is_owned_by = GER }
+            }
+            784 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				88 = { is_owned_by = GER }
+            }
+            88 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				89 = { is_owned_by = GER }
+            }
+            89 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				91 = { is_owned_by = GER }
+            }
+            91 = { transfer_state_to = CZE }
+        }
+		        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				98 = { is_controlled_by = GER }
+            }
+            98 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				87 = { is_controlled_by = GER }
+            }
+            87 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				10 = { is_controlled_by = GER }
+            }
+            10 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				90 = { is_controlled_by = GER }
+            }
+            90 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				92 = { is_controlled_by = GER }
+            }
+            92 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				93 = { is_controlled_by = GER }
+            }
+            93 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				94 = { is_controlled_by = GER }
+            }
+            94 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				95 = { is_controlled_by = GER }
+            }
+            95 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				96 = { is_controlled_by = GER }
+            }
+            96 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				97 = { is_controlled_by = GER }
+            }
+            97 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				784 = { is_controlled_by = GER }
+            }
+            784 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				88 = { is_controlled_by = GER }
+            }
+            88 = { set_state_controller_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				89 = { is_controlled_by = GER }
+            }
+            89 = { set_state_controller_to = CZE }
+        }
+        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				91 = { is_controlled_by = GER }
+            }
+            91 = { set_state_controller_to = CZE }
+        }
+		807 = { transfer_state_to = GER }
+		85 = { transfer_state_to = GER }
+		86 = { transfer_state_to = GER }
+		762 = { transfer_state_to = GER }
+    }
+}
+
+country_event = {
+    id = HRE_event.29
+    title = HRE_event.29.t
+    desc = HRE_event.29.d
+    picture = GFX_report_event_soviet_soldiers_tank
+
+    fire_only_once = yes
+    mean_time_to_happen = {
+        days = 5
+    }
+    trigger = {
+        tag = SOV
+		has_global_flag = soglashenie
+        OR = {
+        10 = { is_controlled_by = SOV }
+        10 = { is_owned_by = SOV }
+        }
+        OR = {
+        POL = { has_capitulated = yes }
+        POL = { exists = no }
+        }
+    }
+
+    option = {
+        name = HRE_event.29.a
+		if = {
+            limit = {
+                POL = { exists = no }
+				98 = { is_owned_by = SOV }
+            }
+            98 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				87 = { is_owned_by = SOV }
+            }
+            87 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				10 = { is_owned_by = SOV }
+            }
+            10 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				90 = { is_owned_by = SOV }
+            }
+            90 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				92 = { is_owned_by = SOV }
+            }
+            92 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				93 = { is_owned_by = SOV }
+            }
+            93 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				94 = { is_owned_by = SOV }
+            }
+            94 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				95 = { is_owned_by = SOV }
+            }
+            95 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				96 = { is_owned_by = SOV }
+            }
+            96 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				97 = { is_owned_by = SOV }
+            }
+            97 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				784 = { is_owned_by = SOV }
+            }
+            784 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				88 = { is_owned_by = SOV }
+            }
+            88 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				89 = { is_owned_by = SOV }
+            }
+            89 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				91 = { is_owned_by = SOV }
+            }
+            91 = { transfer_state_to = CZE }
+        }
+		        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				98 = { is_controlled_by = SOV }
+            }
+            98 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				87 = { is_controlled_by = SOV }
+            }
+            87 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				10 = { is_controlled_by = SOV }
+            }
+            10 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				90 = { is_controlled_by = SOV }
+            }
+            90 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				92 = { is_controlled_by = SOV }
+            }
+            92 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				93 = { is_controlled_by = SOV }
+            }
+            93 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				94 = { is_controlled_by = SOV }
+            }
+            94 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				95 = { is_controlled_by = SOV }
+            }
+            95 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				96 = { is_controlled_by = SOV }
+            }
+            96 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				97 = { is_controlled_by = SOV }
+            }
+            97 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				784 = { is_controlled_by = SOV }
+            }
+            784 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				88 = { is_controlled_by = SOV }
+            }
+            88 = { set_state_controller_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				89 = { is_controlled_by = SOV }
+            }
+            89 = { set_state_controller_to = CZE }
+        }
+        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				91 = { is_controlled_by = SOV }
+            }
+            91 = { set_state_controller_to = CZE }
+        }
+		807 = { transfer_state_to = GER }
+		85 = { transfer_state_to = GER }
+		86 = { transfer_state_to = GER }
+		762 = { transfer_state_to = GER }
+    }
+}
+
+country_event = {
+    id = HRE_event.30
+    title = HRE_event.30.t
+    desc = HRE_event.30.d
+    picture = GFX_report_event_soviet_soldiers_tank
+
+    fire_only_once = yes
+    mean_time_to_happen = {
+        days = 5
+    }
+    trigger = {
+        tag = CZE
+		has_global_flag = soglashenie
+        OR = {
+        10 = { is_controlled_by = CZE }
+        10 = { is_owned_by = CZE }
+        }
+        OR = {
+        POL = { has_capitulated = yes }
+        POL = { exists = no }
+        }
+    }
+
+    option = {
+        name = HRE_event.30.a
+		if = {
+            limit = {
+                POL = { exists = no }
+				98 = { is_owned_by = CZE }
+            }
+            98 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				87 = { is_owned_by = CZE }
+            }
+            87 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				10 = { is_owned_by = CZE }
+            }
+            10 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				90 = { is_owned_by = CZE }
+            }
+            90 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				92 = { is_owned_by = CZE }
+            }
+            92 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				93 = { is_owned_by = CZE }
+            }
+            93 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				94 = { is_owned_by = CZE }
+            }
+            94 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				95 = { is_owned_by = CZE }
+            }
+            95 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				96 = { is_owned_by = CZE }
+            }
+            96 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				97 = { is_owned_by = CZE }
+            }
+            97 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				784 = { is_owned_by = CZE }
+            }
+            784 = { transfer_state_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				88 = { is_owned_by = CZE }
+            }
+            88 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				89 = { is_owned_by = CZE }
+            }
+            89 = { transfer_state_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { exists = no }
+				91 = { is_owned_by = CZE }
+            }
+            91 = { transfer_state_to = CZE }
+        }
+		        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				98 = { is_controlled_by = CZE }
+            }
+            98 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				87 = { is_controlled_by = CZE }
+            }
+            87 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				10 = { is_controlled_by = CZE }
+            }
+            10 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				90 = { is_controlled_by = CZE }
+            }
+            90 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				92 = { is_controlled_by = CZE }
+            }
+            92 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				93 = { is_controlled_by = CZE }
+            }
+            93 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				94 = { is_controlled_by = CZE }
+            }
+            94 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				95 = { is_controlled_by = CZE }
+            }
+            95 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				96 = { is_controlled_by = CZE }
+            }
+            96 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				97 = { is_controlled_by = CZE }
+            }
+            97 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				784 = { is_controlled_by = CZE }
+            }
+            784 = { set_state_controller_to = SOV }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				88 = { is_controlled_by = CZE }
+            }
+            88 = { set_state_controller_to = CZE }
+        }
+		if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				89 = { is_controlled_by = CZE }
+            }
+            89 = { set_state_controller_to = CZE }
+        }
+        if = {
+            limit = {
+                POL = { has_capitulated = yes }
+				91 = { is_controlled_by = CZE }
+            }
+            91 = { set_state_controller_to = CZE }
+        }
+		807 = { transfer_state_to = GER }
+		85 = { transfer_state_to = GER }
+		86 = { transfer_state_to = GER }
+		762 = { transfer_state_to = GER }
+    }
+}
+
+country_event = {
+	id = HRE_event.31
+	title = HRE.event.31.t
+	desc = HRE.event.31.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.31.a
+		SOV = {country_event = {id = HRE_event.33}}
+		ai_chance = { base = 20 }
+		add_political_power = -75 # Увеличен штраф политической силы
+		add_stability = -0.15 # Увеличен штраф стабильности
+		add_war_support = -0.15 # Увеличен штраф поддержки войны
+	}
+
+	option = {
+		name = HRE_event.31.b
+		SOV = {country_event = {id = HRE_event.32}}
+		ai_chance = { base = 80 }
+		add_stability = -0.03
+		add_war_support = +0.15 # Увеличена поддержка войны
+	}
+}
+country_event = { #турок отверг ультиматум
+	id = HRE_event.32
+	title = HRE_event.32.t
+	desc = HRE_event.32.d
+	picture = GFX_event_picture
+	is_triggered_only = yes
+
+	option = { #война
+		name = HRE_event.32.a
+		ai_chance = { base = 90 }
+		create_wargoal = {
+		type = take_state_focus
+		target = TUR
+		expire = 90
+		generator = {804 804 356 347 341 797 340 339 342 345 344}}
+		add_stability = +0.10
+		add_war_support = +0.15 # Увеличена поддержка войны
+	}
+
+	option = { #зассать
+		name = HRE_event.32.b
+		ai_chance = { base = 10 }
+		add_political_power = -75 # Увеличен штраф политической силы
+		add_stability = -0.15 # Увеличен штраф стабильности
+		add_war_support = -0.15 # Увеличен штраф поддержки войны
+	}
+}
+
+country_event = { #турок приянл ультиматум
+	id = HRE_event.33
+	title = HRE_event.33.t
+	desc = HRE_event.33.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.33.a
+		354 = { transfer_state_to = SOV } 
+		355 = { transfer_state_to = SOV }
+		356 = { transfer_state_to = SOV }
+		347 = { transfer_state_to = SOV }
+		341 = { transfer_state_to = SOV }
+		797 = { transfer_state_to = SOV }
+		340 = { transfer_state_to = SOV }
+		339 = { transfer_state_to = SOV }
+		342 = { transfer_state_to = SOV }
+		345 = { transfer_state_to = SOV }
+		344 = { transfer_state_to = SOV }
+	
+	}
+}
+country_event = { #поляку пришёл ивент о исконно русских землях
+	id = HRE_event.34
+	title = HRE_event.34.t
+	desc = HRE_event.34.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.34.a
+		ai_chance = {
+			base = 20
+		}
+		SOV = {country_event = {id = HRE_event.35}}
+	}
+
+	option = {
+		name = HRE_event.34.b
+		ai_chance = {
+			base = 80
+		}
+		SOV = {country_event = {id = HRE_event.36}}
+	}
+}
+country_event = { #поляк принял ультиматум на исконно русские терки
+	id = HRE_event.35
+	title = HRE_event.35.t
+	desc = HRE_event.35.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.35.a
+		10 = { transfer_state_to = SOV } 
+		96 = { transfer_state_to = SOV } 
+		95 = { transfer_state_to = SOV }
+		94 = { transfer_state_to = SOV }
+		93 = { transfer_state_to = SOV }
+		92 = { transfer_state_to = SOV }
+		90 = { transfer_state_to = SOV }
+		87 = { transfer_state_to = SOV }
+		98 = { transfer_state_to = SOV }
+		97 = { transfer_state_to = SOV }
+		784 = { transfer_state_to = SOV }
+		add_political_power = 100 
+		add_stability = +0.05 
+	}
+}
+country_event = { #отказ поляка за русские терки
+	id = HRE_event.36
+	title = HRE_event.36.t
+	desc = HRE_event.36.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.36.a
+		ai_chance = {
+			base = 90
+		}
+		create_wargoal = {
+			target = POL
+			type = annex_everything
+			expire = 90
+		}
+		add_war_support = 0.05
+		add_stability = 0.05
+		add_command_power = 25
+	}
+	option = {
+		name = HRE_event.36.b
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -100
+		add_stability = -0.10
+		add_war_support = -0.15
+	}
+}
+country_event = { #забрать всю польшу
+	id = HRE_event.37
+	title = HRE_event.37.t
+	desc = HRE_event.37.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.37.a
+		ai_chance = {
+			base = 90
+		}
+			SOV = {country_event = {id = HRE_event.39 days = 1}}
+	}
+	
+	option = {
+		name = HRE_event.37.b
+		ai_chance = {
+			base = 10
+		}
+			SOV = {country_event = {id = HRE_event.38 days = 1}}
+	}
+}
+country_event = {
+	id = HRE_event.38
+	title = HRE_event.38.t
+	desc = HRE_event.38.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.38.a
+		10 = { transfer_state_to = SOV } 
+		96 = { transfer_state_to = SOV } 
+		95 = { transfer_state_to = SOV }
+		94 = { transfer_state_to = SOV }
+		93 = { transfer_state_to = SOV }
+		92 = { transfer_state_to = SOV }
+		90 = { transfer_state_to = SOV }
+		87 = { transfer_state_to = SOV }
+		98 = { transfer_state_to = SOV }
+		97 = { transfer_state_to = SOV }
+		784 = { transfer_state_to = SOV }
+		91 = { transfer_state_to = SOV }
+		89 = { transfer_state_to = SOV }
+		88 = { transfer_state_to = SOV }
+		762 = { transfer_state_to = SOV }
+		86 = { transfer_state_to = SOV }
+		807	 = { transfer_state_to = SOV }
+		85 = { transfer_state_to = SOV }
+		add_political_power = 100 
+		add_stability = +0.05 
+	}
+	
+}
+country_event = { #поляк отказал совку
+	id = HRE_event.39
+	title = HRE_event.39.t
+	desc = HRE_event.39.d
+	#picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.39.a
+		ai_chance = {
+			base = 90
+		}
+		create_wargoal = {
+			target = POL
+			type = annex_everything
+		}
+		add_war_support = 0.05
+		add_stability = 0.03
+		army_experience = 20
+	}
+	
+	option = {
+		name = HRE_event.39.b
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -50
+		add_stability = -0.05
+		add_war_support = -0.10
+	}
+}
+country_event = { #
+	id = HRE_event.40
+	title = HRE_event.40.t
+	desc = HRE_event.40.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.40.a
+		ai_chance = { base = 100 }
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.10
+	}
+}
+country_event = { # Ультиматум Болгарии на Бургас
+	id = HRE_event.41
+	title = HRE_event.41.t
+	desc = HRE_event.41.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = { # Принять ультиматум
+		name = HRE_event.41.a
+		ai_chance = { base = 30 }
+		SOV = { country_event = { id = HRE_event.42 days = 1 } }
+		add_political_power = -50
+		add_stability = -0.05
+	}
+
+	option = { # Отвергнуть ультиматум
+		name = HRE_event.41.b
+		ai_chance = { base = 70 }
+		SOV = { country_event = { id = HRE_event.43 days = 1 } }
+		add_war_support = 0.05
+	}
+}
+
+country_event = { # Болгария приняла ультиматум
+	id = HRE_event.42
+	title = HRE_event.42.t
+	desc = HRE_event.42.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.42.a
+		set_global_flag = bolgarka
+		ai_chance = { base = 100 }
+		211 = { transfer_state_to = SOV } # Бургас
+		add_political_power = 50
+		add_stability = 0.05
+	}
+}
+
+country_event = { # Болгария отвергла ультиматум
+	id = HRE_event.43
+	title = HRE_event.43.t
+	desc = HRE_event.43.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = { # Объявить войну
+		name = HRE_event.43.a
+		ai_chance = { base = 80 }
+		create_wargoal = {
+			type = take_state_focus
+			target = BUL
+			generator = { 48 } # Бургас
+		}
+		add_war_support = 0.10
+	}
+
+	option = { # Отступить
+		name = HRE_event.43.b
+		ai_chance = { base = 20 }
+		add_political_power = -75
+		add_stability = -0.10
+	}
+}
+
+country_event = { # Ультиматум Болгарии о вступлении в состав Российской Империи
+	id = HRE_event.44
+	title = HRE_event.44.t
+	desc = HRE_event.44.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = { # Принять ультиматум
+		name = HRE_event.44.a
+		ai_chance = { base = 30 }
+		SOV = { 
+			annex_country = { target = BUL transfer_troops = yes }
+			country_event = { id = HRE_event.45 days = 1 }
+		}
+		add_political_power = -50
+	}
+
+	option = { # Отвергнуть ультиматум
+		name = HRE_event.44.b
+		ai_chance = { base = 70 }
+		SOV = { country_event = { id = HRE_event.46 days = 1 } }
+		add_war_support = 0.10
+	}
+}
+
+country_event = { # Болгария приняла ультиматум
+	id = HRE_event.45
+	title = HRE_event.45.t
+	desc = HRE_event.45.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = {
+		name = HRE_event.45.a
+		ai_chance = { base = 100 }
+		add_political_power = 100
+		add_stability = 0.10
+	}
+}
+
+country_event = { # Болгария отвергла ультиматум
+	id = HRE_event.46
+	title = HRE_event.46.t
+	desc = HRE_event.46.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = { # Объявить войну
+		name = HRE_event.46.a
+		ai_chance = { base = 75 }
+		create_wargoal = {
+			type = annex_everything
+			target = BUL
+		}
+		add_war_support = 0.15
+	}
+
+	option = { # Отступить
+		name = HRE_event.46.b
+		ai_chance = { base = 25 }
+		add_political_power = -100
+		add_stability = -0.15
+	}
+}
+
+########################################
+
+
+country_event = { # Раздел Румынии между Россией и Чехословакией
+	id = HRE_event.50
+	title = HRE_event.50.t
+	desc = HRE_event.50.d
+	picture = GFX_event_picture
+
+	is_triggered_only = yes
+
+	option = { # Принять ультиматум
+		name = HRE_event.50.a
+		ai_chance = { base = 100 }
+		SOV = { country_event = { id = HRE_event.51 days = 1 } }
+		
+		# Передача Буковины Чехословакии
+		CZE = {
+			transfer_state = 80 # Буковина
+			transfer_state = 76 # Северная трансильвания
+		}
+		
+		# Аннексия остальной Румынии Россией
+		SOV = {
+			annex_country = { 
+				target = ROM 
+				transfer_troops = yes
+			}
+		}
+		
+
+		
+		# Скрытый эффект для создания напряженности
+		hidden_effect = {
+			add_threat = 10
+		}
+	}
+	option = { # Отвергнуть ультиматум
+		name = HRE_event.50.b
+		ai_chance = { base = 80 }
+		SOV = { country_event = { id = HRE_event.52 days = 1 } }
+		CZE = { country_event = { id = HRE_event.52 days = 1 } }
+		# Дипломатические последствия
+		add_political_power = 50
+		add_stability = -0.05
+		add_war_support = 0.15
+		
+		# Скрытый эффект для создания напряженности
+			hidden_effect = {
+			add_threat = 5
+		}
+	}
+}
+	country_event = {
+		id = HRE_event.51
+		title = HRE_event.51.t
+		desc = HRE_event.51.d
+		picture = GFX_report_event_generic_sign_treaty1
+		
+		is_triggered_only = yes
+		
+		option = { # РУМЫН ПРИНЯЛ
+			name = HRE_event.51.a
+			ai_chance = { base = 100 }
+			
+			# Дипломатические последствия
+			add_political_power = 10
+			add_stability = 0.02
+			add_war_support = 0.03
+	}
+}
+country_event = {
+	id = HRE_event.52
+	title = HRE_event.52.t
+	desc = HRE_event.52.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Румыния отвергла ультиматум
+		name = HRE_event.52.a
+		ai_chance = { base = 90 }
+		
+		# Дипломатические последствия
+		add_political_power = -50
+		add_war_support = 0.10
+		
+		# Создание цели войны против Румынии
+		create_wargoal = {
+			type = annex_everything
+			target = ROM
+		}
+		
+		# Скрытый эффект для создания напряженности
+		hidden_effect = {
+			add_threat = 15
+			news_event = { id = news.300 hours = 6 }
+		}
+	}
+	
+	option = { # Пересмотреть наши требования
+		name = HRE_event.52.b
+		ai_chance = { base = 10 }
+		
+		# Дипломатические последствия
+		add_political_power = -25
+		add_stability = 0.02
+		add_war_support = -0.05
+		
+	}
+}
+
+country_event = {
+	id = HRE_event.53
+	title = HRE_event.53.t
+	desc = HRE_event.53.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Югославия принимает предложение
+		name = HRE_event.53.a
+		ai_chance = { base = 30 }
+		
+		SOV = {
+			annex_country = { target = YUG transfer_troops = yes }
+		}
+	}
+	
+	option = { # Югославия отвергает предложение
+		name = HRE_event.53.b
+		ai_chance = { base = 70 }
+		
+		SOV = { country_event = { id = HRE_event.54 days = 1 } }
+		
+		add_political_power = 50
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.54
+	title = HRE_event.54.t
+	desc = HRE_event.54.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Россия готовится к войне
+		name = HRE_event.54.a
+		ai_chance = { base = 80 }
+		
+		create_wargoal = {
+			type = annex_everything
+			target = YUG
+		}
+		
+		add_war_support = 0.10
+		add_political_power = -25
+	}
+	
+	option = { # Россия отступает
+		name = HRE_event.54.b
+		ai_chance = { base = 20 }
+		
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+country_event = {
+	id = HRE_event.55
+	title = HRE_event.55.t
+	desc = HRE_event.55.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Греция принимает предложение
+		name = HRE_event.55.a
+		ai_chance = { base = 30 }
+		SOV = {country_event = {id = HRE_event.57 days = 1}}
+	}
+	
+	option = { # Греция отвергает предложение
+		name = HRE_event.55.b
+		ai_chance = { base = 70 }
+		
+		SOV = {country_event = {id = HRE_event.56 days = 1}}
+		
+		add_political_power = 50
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.56
+	title = HRE_event.56.t
+	desc = HRE_event.56.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Россия готовится к войне
+		name = HRE_event.56.a
+		ai_chance = { base = 80 }
+		
+		create_wargoal = {
+			type = annex_everything
+			target = GRE
+		}
+		
+		add_war_support = 0.10
+		add_political_power = -25
+	}
+	
+	option = { # Россия отступает
+		name = HRE_event.56.b
+		ai_chance = { base = 20 }
+		
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+country_event = {
+	id = HRE_event.57
+	title = HRE_event.57.t
+	desc = HRE_event.57.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # Россия принимает капитуляцию Греции
+		name = HRE_event.57.a
+		ai_chance = { base = 100 }
+		
+		annex_country = { target = GRE transfer_troops = yes }
+		
+		add_political_power = 100
+		add_stability = 0.05
+		add_war_support = 0.10
+	}
+}
+
+country_event = {
+	id = HRE_event.58
+	title = HRE_event.58.t
+	desc = HRE_event.58.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Албания принимает ультиматум
+		name = HRE_event.58.a
+		ai_chance = { base = 40 }
+		
+		SOV = {country_event = { id = HRE_event.59 }}
+		
+		add_political_power = -50
+		add_stability = -0.10
+	}
+	
+	option = { # Албания отвергает ультиматум
+		name = HRE_event.58.b
+		ai_chance = { base = 60 }
+		
+		SOV = {
+			country_event = { id = HRE_event.60 }
+		}
+		
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.59
+	title = HRE_event.59.t
+	desc = HRE_event.59.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # Россия принимает капитуляцию Албании
+		name = HRE_event.59.a
+		ai_chance = { base = 100 }
+		
+		annex_country = { target = ALB transfer_troops = yes }
+		
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.60
+	title = HRE_event.60.t
+	desc = HRE_event.60.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = { # Россия готовится к войне
+		name = HRE_event.60.a
+		ai_chance = { base = 80 }
+		
+		create_wargoal = {
+			type = annex_everything
+			target = ALB
+		}
+		
+		add_war_support = 0.10
+		add_political_power = -25
+	}
+	
+	option = { # Россия отступает
+		name = HRE_event.60.b
+		ai_chance = { base = 20 }
+		
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+country_event = {
+	id = HRE_event.61
+	title = HRE_event.61.t
+	desc = HRE_event.61.d
+	picture = GFX_report_event_generic_naval_battle
+	
+	is_triggered_only = yes
+	option = { # Россия утверждает господство над Черным морем
+		name = HRE_event.61.a
+		ai_chance = { base = 100 }
+		
+		add_political_power = 50
+		add_war_support = 0.05
+		add_stability = 0.03
+		
+		navy_experience = 25
+	}
+}
+
+
+country_event = {
+	id = HRE_event.62
+	title = HRE_event.62.t
+	desc = HRE_event.62.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = { # Начало подготовки к великому плану
+		name = HRE_event.62.a
+		ai_chance = { base = 100 }
+		
+		add_political_power = 100
+		add_stability = 0.05
+	}
+}
+country_event = {#ультиматум италу
+	id = HRE_event.63
+	title = HRE_event.63.t
+	desc = HRE_event.63.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Италия принимает ультиматум
+		name = HRE_event.63.a
+		ai_chance = { base = 10 }
+		SOV = {country_event = {id = HRE_event.65 days = 1}}
+		
+		add_political_power = -50
+		add_stability = -0.05
+		add_war_support = -0.10
+	}
+	
+	option = { # Италия отвергает ультиматум
+		name = HRE_event.63.b
+		ai_chance = { base = 90 }
+		SOV = {country_event = {id = HRE_event.64 days = 1}}
+		SOV = {
+			create_wargoal = {
+				type = take_state_focus
+				target = ITA
+				generator = { 852 163 736 }
+			}
+		}
+		
+		add_political_power = 25
+		add_stability = 0.02
+		add_war_support = 0.03
+	}
+}
+
+country_event = {
+	id = HRE_event.64
+	title = HRE_event.64.t
+	desc = HRE_event.64.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.64.a
+		ai_chance = { base = 90 }
+		
+		add_war_support = 0.05
+		add_political_power = 50
+		
+		hidden_effect = {
+			create_wargoal = {
+				type = take_state_focus
+				target = ITA
+				expire = 90
+				generator = { 852 163 736 }
+			}
+		}
+	}
+	option = {
+		name = HRE_event.64.b
+		ai_chance = { base = 10 }
+		
+		add_war_support = -0.10
+		add_political_power = -25
+		add_stability = -0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.65
+	title = HRE_event.65.t
+	desc = HRE_event.65.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		SOV = {
+			transfer_state = 852 # Зара
+			transfer_state = 163 # Истрия
+			transfer_state = 736 # Литораль
+		}
+		name = HRE_event.65.a
+		ai_chance = { base = 100 }
+		
+		add_war_support = 0.01
+		add_political_power = 10
+	}
+}
+
+country_event = { #англия нахуй
+	id = HRE_event.66
+	title = HRE_event.66.t
+	desc = HRE_event.66.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.66.a
+		ai_chance = { base = 90 }
+		SOV = {country_event = {id = HRE_event.67}}
+		add_political_power = 100
+		add_stability = 0.20
+		add_war_support = 0.10
+	}
+	option = {
+		name = HRE_event.66.b
+		ai_chance = { base = 10 }
+		SOV = {country_event = {id = HRE_event.68}}
+		add_political_power = -150
+		add_stability = -0.20
+		add_war_support = -0.20
+	}
+}
+
+country_event = {
+	id = HRE_event.67
+	title = HRE_event.67.t
+	desc = HRE_event.67.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.67.a
+		ai_chance = { base = 90 }
+		
+		add_political_power = 25
+		add_stability = 0.02
+		add_war_support = 0.01
+		create_wargoal = {
+			target = ENG
+			type = annex_everything
+		}
+	}
+	option = {
+		name = HRE_event.67.b
+		ai_chance = { base = 10 }
+		
+		add_political_power = -25
+		add_stability = -0.02
+		add_war_support = -0.01
+	}
+}
+
+country_event = {
+	id = HRE_event.68
+	title = HRE_event.68.t
+	desc = HRE_event.68.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.68.a
+		ai_chance = { base = 100 }
+		SOV = {
+			transfer_state = 455
+			transfer_state = 454
+			transfer_state = 453
+			transfer_state = 446
+			transfer_state = 447
+			transfer_state = 269
+			transfer_state = 452
+			transfer_state = 456
+			transfer_state = 457
+			transfer_state = 907
+			transfer_state = 183	
+			transfer_state = 118
+			transfer_state = 883
+			transfer_state = 116
+			transfer_state = 552
+		}
+		add_political_power = 30
+		add_war_support = 0.10
+	}
+}
+
+
+country_event = { #франции пизда
+	id = HRE_event.69
+	title = HRE_event.69.t
+	desc = HRE_event.69.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.69.a
+		ai_chance = { base = 90 }
+		SOV = {country_event = { id = HRE_event.70 }}
+		add_political_power = 35
+		add_stability = 0.03
+		add_war_support = 0.02
+	}
+
+	option = {
+			name = HRE_event.69.b
+			ai_chance = { base = 10 }
+			SOV = {country_event = { id = HRE_event.71 }}
+			add_political_power = -20
+			add_stability = -0.05
+			add_war_support = -0.03
+	}
+}
+
+
+country_event = {
+	id = HRE_event.70
+	title = HRE_event.70.t
+	desc = HRE_event.70.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.70.a
+		ai_chance = { base = 90 }
+		create_wargoal = {
+			target = FRA
+			type = annex_everything
+		}
+		add_political_power = 40
+		add_stability = 0.03
+		add_war_support = 0.03
+	}
+	option = {
+		name = HRE_event.70.b
+		ai_chance = { base = 10 }
+		
+		add_political_power = -30
+		add_stability = -0.05
+		add_war_support = -0.10
+	}
+}
+country_event = {
+	id = HRE_event.71
+	title = HRE_event.71.t
+	desc = HRE_event.71.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.71.a
+		set_global_flag = franc
+		ai_chance = { base = 100 }
+		
+		add_political_power = 45
+		add_stability = 0.04
+		add_war_support = 0.03
+		SOV = {
+			transfer_state = 458 # Тунис
+			transfer_state = 459 # Алжир
+			transfer_state = 460 # Константина
+			transfer_state = 553 # Ливан
+			transfer_state = 665 # Габес
+			transfer_state = 461 # Касабланка
+			transfer_state = 513 # Тлесмен
+			transfer_state = 462 # Марракеш
+			transfer_state = 554 # дамаск
+			transfer_state = 677 # Аллепо
+			transfer_state = 680 # дейер
+			transfer_state = 799 # Хатай
+			transfer_state = 268 # Французский берег Сомали
+		}
+	}
+}
+country_event = {
+	id = HRE_event.72
+	title = HRE_event.72.t
+	desc = HRE_event.72.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.72.a
+		ai_chance = { base = 30 }
+		SOV = {country_event = { id = HRE_event.73 days = 1 }}
+		
+		add_political_power = -50
+		add_stability = -0.05
+		add_war_support = -0.05
+		
+		hidden_effect = {
+			SOV = { country_event = { id = HRE_event.73 days = 1 } }
+		}
+	}
+	option = {
+		name = HRE_event.72.b
+		ai_chance = { base = 80 }
+		
+		hidden_effect = {
+			SOV = { country_event = { id = HRE_event.74 days = 1 } }
+		}
+	}
+}
+
+country_event = {
+	id = HRE_event.73
+	title = HRE_event.73.t
+	desc = HRE_event.73.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.73.a
+		SOV = {
+			transfer_state = 165 # Каталония
+			transfer_state = 166 # Арагон
+			transfer_state = 169 # Валенсия
+			transfer_state = 168 # Мурсия
+			transfer_state = 173 # Гранада
+			transfer_state = 290
+			transfer_state = 177
+			transfer_state = 783
+			transfer_state = 178
+		}
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = HRE_event.74
+	title = HRE_event.74.t
+	desc = HRE_event.74.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.74.a
+		
+		create_wargoal = {
+			target = SPR
+			type = annex_everything
+		}
+	}
+	option = {
+		name = HRE_event.74.b
+		
+		add_political_power = -25
+		add_stability = -0.03
+		add_war_support = -0.03
+	}
+}
+
+
+country_event = {
+	id = HRE_event.75
+	title = HRE_event.75.t
+	desc = HRE_event.75.d
+	picture = GFX_report_event_generic_naval_battle
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.75.a
+		add_political_power = 100
+		add_war_support = 0.10
+		navy_experience = 50
+	}
+}
