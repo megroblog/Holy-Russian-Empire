@@ -254,22 +254,91 @@ HRE_nationalization_category = {
 				state = 799
 				state = 883
 				state = 907
+				state = 290
+				state = 177
 			}
 		}
 
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = controls_territories_of_Mediterranean
-				SOV = {all_owned_state = {is_mediterranean_territories = yes}}
+				owned_state = 116
+				owned_state = 118
+				owned_state = 183
+				owned_state = 268
+				owned_state = 269
+				owned_state = 446
+				owned_state = 447
+				owned_state = 448
+				owned_state = 449
+				owned_state = 450
+				owned_state = 451
+				owned_state = 452
+				owned_state = 453
+				owned_state = 454
+				owned_state = 455
+				owned_state = 456
+				owned_state = 457
+				owned_state = 458
+				owned_state = 459
+				owned_state = 460
+				owned_state = 461
+				owned_state = 462
+				owned_state = 513
+				owned_state = 552
+				owned_state = 553
+				owned_state = 554
+				owned_state = 661
+				owned_state = 662
+				owned_state = 663
+				owned_state = 665
+				owned_state = 677
+				owned_state = 680
+				owned_state = 799
+				owned_state = 883
+				owned_state = 907
 			}
 		}
 
 
 		complete_effect = {
-			every_owned_state = {
-				limit = {is_mediterranean_territories = yes}
-				add_compliance = 20
-			}
+		custom_effect_tooltip = SOV_nationalize_mediterranean
+		hidden_effect = {
+			116 = { add_compliance = 20 }
+			118 = { add_compliance = 20 }
+			183 = { add_compliance = 20 }
+			268 = { add_compliance = 20 }
+			269 = { add_compliance = 20 }
+			446 = { add_compliance = 20 }
+			447 = { add_compliance = 20 }
+			448 = { add_compliance = 20 }
+			449 = { add_compliance = 20 }
+			450 = { add_compliance = 20 }
+			451 = { add_compliance = 20 }
+			452 = { add_compliance = 20 }
+			453 = { add_compliance = 20 } 
+			454 = { add_compliance = 20 }
+			455 = { add_compliance = 20 }
+			456 = { add_compliance = 20 }
+			457 = { add_compliance = 20 }
+			458 = { add_compliance = 20 }
+			459 = { add_compliance = 20 }
+			460 = { add_compliance = 20 }
+			461 = { add_compliance = 20 }
+			462 = { add_compliance = 20 }
+			513 = { add_compliance = 20 }
+			552 = { add_compliance = 20 }
+			553 = { add_compliance = 20 }
+			554 = { add_compliance = 20 }
+			661 = { add_compliance = 20 }
+			662 = { add_compliance = 20 }
+			663 = { add_compliance = 20 }
+			665 = { add_compliance = 20 }
+			677 = { add_compliance = 20 }
+			680 = { add_compliance = 20 }
+			799 = { add_compliance = 20 }
+			883 = { add_compliance = 20 }
+			907 = { add_compliance = 20 }
+		}
 		}
 	}
 
@@ -347,89 +416,89 @@ HRE_nationalization_category = {
 		}
 	}
 
-	#Национализация территорий Эстонии
-	SOV_nationalize_estonian_territories = {
-		priority = 20
-		icon = generic_political_actions
+#Национализация территорий Эстонии
+SOV_nationalize_estonian_territories = {
+	priority = 20
+	icon = generic_political_actions
 
-		allowed = {original_tag = SOV}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 813
-				state = 812
-				state = 191
-				state = 13
-				state = 811
-			}
+	allowed = {original_tag = SOV}
+	highlight_states = {
+		highlight_state_targets = {
+			state = 813
+			state = 812
+			state = 191
+			state = 13
+			state = 811
 		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = controls_some_territories_of_Estonia
-				EST = {
-					all_core_state = {
-						is_owned_by = SOV
-					}
-				}
-			}
-		}
-
-		cost = 300
-
-		fire_only_once = yes
-
-		complete_effect = {
-			custom_effect_tooltip = core_of_Estonia
-			hidden_effect = {
-				every_owned_state = {
-					limit = {is_core_of = EST}
-					add_core_of = SOV
-				}
-			}
-		}
-
-		ai_will_do = {factor = 100}
 	}
-	#Национализация территорий литвы
-	SOV_nationalize_lithuanian_territories = {
-		priority = 20
-		icon = generic_political_actions
-
-		allowed = {original_tag = SOV}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 815
-				state = 189
-				state = 814
-				state = 815
-				state = 11
-			}
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = controls_some_territories_of_Lithuania
-				owns_state = 11
-				owns_state = 815
-				owns_state = 189
-				owns_state = 814
-			}
-		}
-
-		cost = 300
-
-		fire_only_once = yes
-
-		complete_effect = {
-			custom_effect_tooltip = core_of_Lithuania
-			hidden_effect = {
-				every_owned_state = {
-					limit = {is_core_of = LIT}
-					add_core_of = SOV
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = controls_some_territories_of_Estonia
+			EST = {
+				all_core_state = {
+					is_owned_by = SOV
 				}
 			}
 		}
-
-		ai_will_do = {factor = 100}
 	}
+
+	cost = 300
+
+	fire_only_once = yes
+
+	complete_effect = {
+		custom_effect_tooltip = core_of_Estonia
+		hidden_effect = {
+			every_owned_state = {
+				limit = {is_core_of = EST}
+				add_core_of = SOV
+			}
+		}
+	}
+
+	ai_will_do = {factor = 100}
+}
+#Национализация территорий литвы
+SOV_nationalize_lithuanian_territories = {
+	priority = 20
+	icon = generic_political_actions
+
+	allowed = {original_tag = SOV}
+	highlight_states = {
+		highlight_state_targets = {
+			state = 815
+			state = 189
+			state = 814
+			state = 815
+			state = 11
+		}
+	}
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = controls_some_territories_of_Lithuania
+			owns_state = 11
+			owns_state = 815
+			owns_state = 189
+			owns_state = 814
+		}
+	}
+
+	cost = 300
+
+	fire_only_once = yes
+
+	complete_effect = {
+		custom_effect_tooltip = core_of_Lithuania
+		hidden_effect = {
+			every_owned_state = {
+				limit = {is_core_of = LIT}
+				add_core_of = SOV
+			}
+		}
+	}
+
+	ai_will_do = {factor = 100}
+}
 
 
 	#Национализация территорий Латвии
@@ -533,12 +602,59 @@ HRE_nationalization_category = {
 		
 		complete_effect = {set_cosmetic_tag = SOV_HRE}
 	}
-
 }
 
-HRE_debug_category = {
 
+HRE_Turkey_category = {
+
+	SOV_the_demand_for_complete_Turkish_annexation = {
+		priority = 1
+		icon = generic_political_actions
+		highlight_states = {
+			highlight_state_targets = {
+				state = 343
+				state = 49
+				state = 346
+				state = 348
+				state = 798
+				state = 348
+				state = 349
+				state = 353
+				state = 350
+				state = 800
+				state = 352
+			}
+		}
+		cost = 100	
+		complete_effect = {
+			TUR = { country_event = { id = HRE_event.76 days = 1} }
+		}
+		available = {
+			has_completed_focus = SOV_put_pressure_on_turkey
+			NOT = { has_country_flag = turkey_annexation_completed }
+		}
+		
+		visible = {
+			has_completed_focus = SOV_put_pressure_on_turkey
+			NOT = { has_country_flag = turkey_annexation_completed }
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+			set_country_flag = turkey_annexation_completed
+			custom_effect_tooltip = SOV_turkey_annexation_tooltip
+			hidden_effect = {
+				remove_decision_category = HRE_Turkey_category
+			}
+		}
+	}
 }
+
 
 
 

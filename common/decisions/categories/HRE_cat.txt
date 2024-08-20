@@ -26,3 +26,13 @@ HRE_debug_category = {
 
 	allowed = {is_debug = yes}
 }
+HRE_Turkey_category = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {
+			original_tag = SOV
+	}
+	visible = {SOV = {has_completed_focus = SOV_put_pressure_on_turkey}}
+}

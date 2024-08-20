@@ -2368,3 +2368,79 @@ country_event = {
 		navy_experience = 50
 	}
 }
+country_event = {#ультиматум турции
+	id = HRE_event.76
+	title = HRE_event.76.t
+	desc = HRE_event.76.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.76.a
+		ai_chance = { base = 30 }
+		SOV = {country_event = { id = HRE_event.79 }}
+		add_political_power = 50
+		add_stability = -0.05
+		add_war_support = 0.40
+	}
+	
+	option = {
+		name = HRE_event.76.b
+		ai_chance = { base = 70 }
+		SOV = {country_event = { id = HRE_event.78 }}
+		add_political_power = -25
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+}
+
+country_event = { #турция приняла
+	id = HRE_event.78
+	title = HRE_event.78.t
+	desc = HRE_event.78.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.78.a
+		SOV = {
+			transfer_state = 343
+			transfer_state = 49
+			transfer_state = 346
+			transfer_state = 348
+			transfer_state = 798
+			transfer_state = 348
+			transfer_state = 349
+			transfer_state = 353
+			transfer_state = 350
+			transfer_state = 800
+			transfer_state = 352
+		}
+	}
+}
+
+country_event = { #турция отказала
+	id = HRE_event.79
+	title = HRE_event.79.t
+	desc = HRE_event.79.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = HRE_event.79.a
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.10
+		SOV = {
+			create_wargoal = {
+				type = take_state_focus
+				target = TUR
+				generator = { 343 49 346 348 798 349 353 350 800 352 }
+			}
+		}
+	}
+}
+
