@@ -184,7 +184,6 @@ focus_tree = {
 		}
 	}
 
-
 	focus = { #SOV_russian_poles
 		id = SOV_russian_poles
 		icon = GFX_focus_POL_polish_revanchism
@@ -198,11 +197,12 @@ focus_tree = {
 		y = 3
 		completion_reward = {
 			set_global_flag = soglashenie
-			SOV = {country_event = {id = HRE_event.11 days = 1}}
+			SOV = {country_event = {id = HRE_event.11}}
 		}
 	}	
-	focus = { #владыка чёрного моря
-		id = SOV_Preparing_for_the_great_plan
+
+	focus = { #SOV_preparing_for_the_great_plan
+		id = SOV_preparing_for_the_great_plan
 		icon = GFX_focus_SOV_merge_plants
 		cost = 10
 		
@@ -220,6 +220,7 @@ focus_tree = {
 			SOV = {country_event = {id = HRE_event.62}}
 		}
 	}
+
 	focus = { #SOV_return_tsar_grad
 		id = SOV_return_tsar_grad
 		icon = GFX_focus_TUR_the_montreux_convention
@@ -227,7 +228,7 @@ focus_tree = {
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 
-		prerequisite = {focus = SOV_Preparing_for_the_great_plan}
+		prerequisite = {focus = SOV_preparing_for_the_great_plan}
 	
 		
 		relative_position_id = SOV_cut_a_path_to_Europe
@@ -247,321 +248,37 @@ focus_tree = {
 		cost = 10
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
-		completion_reward = {
-			TUR = {country_event = {id = HRE_event.31 days = 1}}
-		}
 		prerequisite = {focus = SOV_return_tsar_grad}
 		relative_position_id = SOV_cut_a_path_to_Europe
 		x = -4
 		y = 6
-		available = {
-			has_global_flag = perehod
-		}
-	}
 
-	focus = { #SOV_liberate_the_balkan_slavs
-		id = SOV_liberate_the_balkan_slavs
-		icon = GFX_focus_BUL_oppose_the_royal_dictatorship
-		cost = 10
-		completion_reward = {
-			BUL = {country_event = {id = HRE_event.41}}
-		}
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		prerequisite = {focus = SOV_Preparing_for_the_great_plan}
+		available = {has_global_flag = perehod}
 		
-		relative_position_id = SOV_cut_a_path_to_Europe
-		x = -1
-		y = 5
+		completion_reward = {TUR = {country_event = {id = HRE_event.31 days = 1}}}
 	}
 
-	focus = { #Assemble_the_Senate
-		id = Assemble_the_Senate
-		icon = GFX_focus_NORDIC_mon_institution_2
-		cost = 10
-		relative_position_id = SOV_the_stronghold_of_orthodoxy
-		prerequisite = {focus = SOV_restoration_efforts}
-		x = 10
-		y = 1
-		completion_reward = {
-			add_political_power = 100
-			add_stability = 0.05
-		}
-	}
-
-	focus = {
-		id = SOV_reward_chosen_generals
-		icon = GFX_focus_NORDIC_mon_institution_1
-		cost = 10
-		prerequisite = { focus = SOV_restoration_efforts }
-		relative_position_id = SOV_the_memory_of_1917
-		x = 12
-		y = 0
-		completion_reward = {	
-			add_political_power = 50
-			add_war_support = 0.05
-			add_command_power = 10
-			random_army_leader = {
-				add_trait = { 
-					character = random
-					trait = brilliant_strategist
-				}
-			}
-		}
-	}
-		
-
-
-	
-	focus = { #SOV_forest_leader
-		id = SOV_forest_leader
-		cost = 10
-	
-		prerequisite = {focus = SOV_restoration_efforts}
-		icon = GFX_focus_CHL_expand_the_forestry
-		relative_position_id = SOV_the_stronghold_of_orthodoxy
-		x = 7
-		y = 1
-
-		completion_reward = {	
-			add_political_power = 50
-			add_war_support = 0.05
-			add_command_power = 25
-			random_army_leader = {
-				limit = { is_field_marshal = no }
-				add_trait = { 
-					character = random
-					trait = ranger
-				}
-			}
-		}
-	}
-
-	focus = { #The_Great_Russian_Fleet
-		id = The_Great_Russian_Fleet
-		icon = GFX_focus_NORDIC_mon_selector_navy
-		prerequisite = {
-			focus = SOV_forest_leader
-		}
-		relative_position_id = SOV_forest_leader
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		x = -2
-		y = 1
-		completion_reward = {
-			navy_experience = 50
-			add_tech_bonus = {
-				name = naval_bonus
-				bonus = 0.5
-				uses = 1
-				category = naval_doctrine
-			}
-			add_tech_bonus = {
-				name = cruiser_bonus
-				bonus = 0.5
-				uses = 1
-				category = cl_tech
-			}
-			add_tech_bonus = {
-				name = heavy_cruiser_bonus
-				bonus = 0.5
-				uses = 1
-				category = ca_tech
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_coastal = yes
-					free_building_slots = {
-						building = dockyard
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 5
-					instant_build = yes
-				}
-			}
-		}
-	}
-
-	focus = { #developments_in_artillery
-		id = developments_in_artillery
-		icon = GFX_focus_NORDIC_mon_selector_materiel
-		prerequisite = {
-			focus = SOV_forest_leader
-		}
-		relative_position_id = SOV_forest_leader
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		x = 0
-		y = 1
-		completion_reward = {
-			army_experience = 25
-			add_tech_bonus = {
-				name = artillery_bonus
-				bonus = 0.5
-				uses = 1
-				category = artillery
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_coastal = no
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-
-	focus = { #Russian_Air_Force
-		id = Russian_Air_Force
-		icon = GFX_focus_NORDIC_mon_airforce
-		prerequisite = {
-			focus = SOV_forest_leader
-		}
-		relative_position_id = SOV_forest_leader
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		x = 2
-		y = 1
-		completion_reward = {
-			air_experience = 50
-			add_tech_bonus = {
-				name = air_bonus
-				bonus = 0.5
-				uses = 1
-				category = air_doctrine
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = { #industrialization_program
-		id = industrialization_program
-		icon = GFX_focus_NORDIC_mon_civilian
-		cost = 10
-		search_filters = {FOCUS_FILTER_INDUSTRY}
-		prerequisite = {focus = developments_in_artillery}
-		prerequisite = {focus = Russian_Air_Force}
-		prerequisite = {focus = The_Great_Russian_Fleet}
-		
-	
-		relative_position_id = SOV_forest_leader
-		x = 0
-		y = 2
-	
-		available = {
-			
-		}
-	
-		completion_reward = {
-			add_stability = 0.05
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 5
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = {
-		id = SOV_ultimatum_to_bulgaria
-		icon = GFX_focus_generic_attack_bulgaria
-		cost = 10
-		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-		
-		prerequisite = { focus = SOV_liberate_the_balkan_slavs }
-		
-		relative_position_id = SOV_liberate_the_balkan_slavs
-		x = 1
-		y = 1
-		available = {
-			has_global_flag = bolgarka
-		}
-		completion_reward = {
-		BUL = {country_event = { id = HRE_event.44 }}
-		}
-	}
-
-	focus = { #владыка чёрного моря
-		id = SOV_The_lord_of_the_Black_Sea
-		icon = GFX_focus_generic_black_sea_focus
-		cost = 10
-		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		prerequisite = {focus = SOV_partition_of_romania}
-		
-		relative_position_id = SOV_partition_of_romania
-		x = 0
-		y = 1
-
-		completion_reward = {
-			SOV = {country_event = {id = HRE_event.61}}
-		}
-	}
-	focus = {
+	focus = { #SOV_partition_of_romania
 		id = SOV_partition_of_romania
 		icon = GFX_focus_generic_attack_romania
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
-		prerequisite = { focus = SOV_Preparing_for_the_great_plan }
+		prerequisite = { focus = SOV_preparing_for_the_great_plan }
 		prerequisite = { focus = SOV_liberate_the_balkan_slavs }
 		prerequisite = { focus = SOV_return_tsar_grad }
 		
-		relative_position_id = SOV_Preparing_for_the_great_plan
+		relative_position_id = SOV_preparing_for_the_great_plan
 		x = 0
 		y = 2
 		
 		completion_reward = {
-			ROM = {country_event = {id = HRE_event.50}}
+			ROM = { country_event = { id = HRE_event.50 } }
 			add_state_claim = 46 # Бессарабия
 			add_state_claim = 79 # Молдавия
 			add_state_claim = 46 # Мунтения
 			add_state_claim = 77 # Добруджа
-			
 			
 			hidden_effect = {
 				country_event = { id = soviet.100 days = 1 } # Событие для раздела Румынии
@@ -571,21 +288,38 @@ focus_tree = {
 			add_war_support = 0.05
 		}
 	}
-	focus = {
+
+	focus = { #SOV_the_lord_of_the_black_sea
+		id = SOV_the_lord_of_the_black_sea
+		icon = GFX_focus_generic_black_sea_focus
+		cost = 10
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		prerequisite = { focus = SOV_partition_of_romania }
+		
+		relative_position_id = SOV_partition_of_romania
+		x = 0
+		y = 1
+
+		completion_reward = { SOV = { country_event = { id = HRE_event.61 } } }
+	}
+
+	focus = { #SOV_end_albanian_dictatorship
 		id = SOV_end_albanian_dictatorship
 		icon = GFX_focus_ITA_albanian_fascist_militia
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
-		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		prerequisite = { focus = SOV_the_lord_of_the_black_sea }
 		
 		relative_position_id = SOV_partition_of_romania
 		x = 0
 		y = 3
 		
 		completion_reward = {
-			ALB = {country_event = {id = HRE_event.58 days = 1}}
+			ALB = { country_event = { id = HRE_event.58 days = 1 } }
 			add_war_support = 0.05
 			add_political_power = 25
 			
@@ -595,21 +329,21 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = SOV_The_Byzantine_question
+	focus = { #SOV_the_byzantine_question
+		id = SOV_the_byzantine_question
 		icon = GFX_focus_generic_attack_greece
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
-		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		prerequisite = { focus = SOV_the_lord_of_the_black_sea }
 		
 		relative_position_id = SOV_partition_of_romania
 		x = 1
 		y = 2
 		
 		completion_reward = {
-			GRE = {country_event = { id = HRE_event.55 }}
+			GRE = { country_event = { id = HRE_event.55 } }
 			add_war_support = 0.05
 			add_political_power = 50
 			
@@ -620,21 +354,22 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = SOV_Liberate_the_Western_Slavs
+
+	focus = { #SOV_liberate_the_western_slavs
+		id = SOV_liberate_the_western_slavs
 		icon = GFX_focus_YUG_dissolve_serbia
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
-		prerequisite = { focus = SOV_The_lord_of_the_Black_Sea }
+		prerequisite = { focus = SOV_the_lord_of_the_black_sea }
 		
 		relative_position_id = SOV_partition_of_romania
 		x = -1
 		y = 2
 		
 		completion_reward = {
-			YUG = {country_event = {id = HRE_event.53}}
+			YUG = { country_event = { id = HRE_event.53 } }
 			add_war_support = 0.05
 			add_political_power = 50
 			
@@ -647,12 +382,13 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = SOV_End_Italian_Fascism
+
+	focus = { #SOV_end_italian_fascism
+		id = SOV_end_italian_fascism
 		icon = GFX_focus_SWI_fortify_border_with_italy
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
 		prerequisite = { focus = SOV_end_albanian_dictatorship }
 		
@@ -661,7 +397,7 @@ focus_tree = {
 		y = 4
 		
 		completion_reward = {
-			ITA = {country_event = {id = HRE_event.63 days = 1}}
+			ITA = { country_event = { id = HRE_event.63 days = 1 } }
 			add_political_power = 10
 			
 			hidden_effect = {
@@ -672,24 +408,25 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
+
+	focus = { #SOV_demand_mediterranean_colonies
 		id = SOV_demand_mediterranean_colonies
 		icon = GFX_focus_generic_africa_naval
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
-		prerequisite = { focus = SOV_End_Italian_Fascism }
+		prerequisite = { focus = SOV_end_italian_fascism }
 		
-		relative_position_id = SOV_End_Italian_Fascism
+		relative_position_id = SOV_end_italian_fascism
 		x = 0
 		y = 1
 		
 		completion_reward = {
 			add_political_power = 10
 			
-			ENG = {country_event = {id = HRE_event.66 days = 1}}
-			FRA = {country_event = {id = HRE_event.69 days = 1}}
+			ENG = { country_event = { id = HRE_event.66 days = 1 } }
+			FRA = { country_event = { id = HRE_event.69 days = 1 } }
 			hidden_effect = {
 				add_state_claim = 446 # Александрия
 				add_state_claim = 447 # Каир
@@ -707,12 +444,13 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
+
+	focus = { #SOV_ultimatum_to_spain
 		id = SOV_ultimatum_to_spain
 		icon = GFX_focus_generic_free_iberia
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		
 		prerequisite = { focus = SOV_demand_mediterranean_colonies }
 		
@@ -721,8 +459,8 @@ focus_tree = {
 		y = 1
 		
 		completion_reward = {
-			SPR = {country_event = {id = HRE_event.72 days = 1}}
 			add_political_power = 15
+			SPR = { country_event = { id = HRE_event.72 days = 1 } }
 			
 			hidden_effect = {
 				add_state_claim = 165 # Каталония
@@ -733,7 +471,8 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
+
+	focus = { #SOV_mediterranean_dominance
 		id = SOV_mediterranean_dominance
 		icon = GFX_focus_generic_mediterranean_sea_focus
 		cost = 10
@@ -741,64 +480,322 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		
 		prerequisite = { focus = SOV_ultimatum_to_spain }
-		completion_reward = {
-		country_event = { id = HRE_event.75 }}
 		relative_position_id = SOV_ultimatum_to_spain
 		x = 0
 		y = 1
 		
 		completion_reward = {
+			country_event = { id = HRE_event.75 }
 			add_political_power = 50
 			add_war_support = 0.05
 			add_stability = 0.05
 		}
 	}
-	focus = {
-		id = SOV_restoration_efforts
-		icon = GFX_focus_generic_industry_3
+
+	focus = { #SOV_liberate_the_balkan_slavs
+		id = SOV_liberate_the_balkan_slavs
+		icon = GFX_focus_BUL_oppose_the_royal_dictatorship
 		cost = 10
 		
-		search_filters = {FOCUS_FILTER_INDUSTRY}
-		
-		prerequisite = { focus = SOV_cut_a_path_to_Europe }
+		prerequisite = { focus = SOV_preparing_for_the_great_plan }
 		relative_position_id = SOV_cut_a_path_to_Europe
-		x = 2
+		x = -1
+		y = 5
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		
+		completion_reward = { BUL = { country_event = { id = HRE_event.41 } } }
+	}
+
+	focus = { #SOV_ultimatum_to_bulgaria
+		id = SOV_ultimatum_to_bulgaria
+		icon = GFX_focus_generic_attack_bulgaria
+		cost = 10
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		
+		prerequisite = { focus = SOV_liberate_the_balkan_slavs }
+		
+		relative_position_id = SOV_liberate_the_balkan_slavs
+		x = 1
 		y = 1
 		
-		completion_reward = {
-			add_political_power = 50
-			add_stability = 0.05
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
+		available = { has_global_flag = bolgarka }
+		
+		completion_reward = { BUL = { country_event = { id = HRE_event.44 } } }
+	}
+
+	#ИНДУСТРИЯ
+		focus = { #SOV_restoration_efforts	
+			id = SOV_restoration_efforts
+			icon = GFX_focus_generic_industry_3
+			cost = 10
+			
+			search_filters = {FOCUS_FILTER_INDUSTRY}
+			
+			prerequisite = { focus = SOV_cut_a_path_to_Europe }
+			relative_position_id = SOV_cut_a_path_to_Europe
+			x = 2
+			y = 1
+			
+			completion_reward = {
+				add_political_power = 50
+				add_stability = 0.05
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 0
-						include_locked = yes
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+							include_locked = yes
+						}
 					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 		}
-	}
+
+		focus = { #SOV_forest_leader
+			id = SOV_forest_leader
+			icon = GFX_focus_CHL_expand_the_forestry
+			cost = 10
+			
+			prerequisite = { focus = SOV_restoration_efforts }
+			relative_position_id = SOV_the_stronghold_of_orthodoxy
+			x = 7
+			y = 1
+
+			completion_reward = {	
+				add_political_power = 50
+				add_war_support = 0.05
+				add_command_power = 25
+				random_army_leader = {
+					limit = { is_field_marshal = no }
+					add_trait = { 
+						character = random
+						trait = ranger
+					}
+				}
+			}
+		}
+
+		focus = { #SOV_the_great_russian_fleet
+			id = SOV_the_great_russian_fleet
+			icon = GFX_focus_NORDIC_mon_selector_navy
+			cost = 10
+			
+			prerequisite = { focus = SOV_forest_leader }
+			relative_position_id = SOV_forest_leader
+			x = -2
+			y = 1
+			
+			search_filters = { FOCUS_FILTER_NAVY_XP }
+			
+			completion_reward = {
+				navy_experience = 50
+				add_tech_bonus = {
+					name = naval_bonus
+					bonus = 0.5
+					uses = 1
+					category = naval_doctrine
+				}
+				add_tech_bonus = {
+					name = cruiser_bonus
+					bonus = 0.5
+					uses = 1
+					category = cl_tech
+				}
+				add_tech_bonus = {
+					name = heavy_cruiser_bonus
+					bonus = 0.5
+					uses = 1
+					category = ca_tech
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		focus = { #SOV_developments_in_artillery
+			id = SOV_developments_in_artillery
+			icon = GFX_focus_NORDIC_mon_selector_materiel
+			cost = 10
+			
+			prerequisite = { focus = SOV_forest_leader }
+			relative_position_id = SOV_forest_leader
+			x = 0
+			y = 1
+			
+			search_filters = { FOCUS_FILTER_ARMY_XP }
+			
+			completion_reward = {
+				army_experience = 25
+				add_tech_bonus = {
+					name = artillery_bonus
+					bonus = 0.5
+					uses = 1
+					category = artillery
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = no
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		focus = { #SOV_russian_air_force
+			id = SOV_russian_air_force
+			icon = GFX_focus_NORDIC_mon_airforce
+			cost = 10
+			
+			prerequisite = { focus = SOV_forest_leader }
+			relative_position_id = SOV_forest_leader
+			x = 2
+			y = 1
+			
+			search_filters = { FOCUS_FILTER_AIR_XP }
+			
+			completion_reward = {
+				air_experience = 50
+				add_tech_bonus = {
+					name = air_bonus
+					bonus = 0.5
+					uses = 1
+					category = air_doctrine
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		focus = { #SOV_industrialization_program
+			id = SOV_industrialization_program
+			icon = GFX_focus_NORDIC_mon_civilian
+			cost = 10
+			
+			prerequisite = { focus = SOV_developments_in_artillery }
+			prerequisite = { focus = SOV_russian_air_force }
+			prerequisite = { focus = SOV_the_great_russian_fleet }
+			relative_position_id = SOV_forest_leader
+			x = 0
+			y = 2
+			
+			search_filters = { FOCUS_FILTER_INDUSTRY }
+			
+			completion_reward = {
+				add_stability = 0.05
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		focus = { #SOV_assemble_the_senate
+			id = SOV_assemble_the_senate
+			icon = GFX_focus_NORDIC_mon_institution_2
+			cost = 10
+			
+			prerequisite = { focus = SOV_restoration_efforts }
+			relative_position_id = SOV_the_stronghold_of_orthodoxy
+			x = 10
+			y = 1
+			
+			completion_reward = {
+				add_political_power = 100
+				add_stability = 0.05
+			}
+		}
+
+		focus = { #SOV_reward_chosen_generals
+			id = SOV_reward_chosen_generals
+			icon = GFX_focus_NORDIC_mon_institution_1
+			cost = 10
+			
+			prerequisite = { focus = SOV_restoration_efforts }
+			relative_position_id = SOV_the_memory_of_1917
+			x = 12
+			y = 0
+			
+			completion_reward = {	
+				add_political_power = 50
+				add_war_support = 0.05
+				add_command_power = 10
+				random_army_leader = {
+					add_trait = { 
+						character = random
+						trait = brilliant_strategist
+					}
+				}
+			}
+		}
 	
 
 ##    ##  #######      ######  ######## ######## ########     ########     ###     ######  ##    ## 

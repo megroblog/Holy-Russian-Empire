@@ -1,9 +1,8 @@
 HRE_nationalization_category = {
 
-	# Решение для национализации территорий SOV
-	SOV_prepare_population = {
-		#icon = generic_political_actions
-		priority = 100
+	#Национализация территорий Польши
+	SOV_nationalize_polish_territories = {
+		icon = generic_political_actions
 
 		allowed = {original_tag = SOV}
 		available = {
@@ -23,30 +22,120 @@ HRE_nationalization_category = {
 			}
 		}
 
-		cost = 250
-		fire_only_once = yes
-		days_remove = 90
+		cost = 300
 
-		remove_effect = {
-			set_country_flag = population_preparation_completed
-			custom_effect_tooltip = population_preparation_completed
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Poland
+			hidden_effect = {
+			every_owned_state = {
+				limit = {is_core_of = POL}
+				add_core_of = SOV
+				}
+			}
 		}
+		
+		ai_will_do = {factor = 100}
 	}
-	
-	SOV_nationalize_polish_territories = {
+
+	#Национализация территорий Болгарии
+	SOV_nationalize_bulgarian_territories = {
 		icon = generic_political_actions
 
 		allowed = {original_tag = SOV}
-		available = {has_country_flag = population_preparation_completed}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Bulgaria
+				BUL = {
+					all_core_state = {
+						is_owned_by = SOV
+					}
+				}
+			}
+		}
 
 		cost = 300
 
 		fire_only_once = yes
 
 		complete_effect = {
+			custom_effect_tooltip = core_of_Bulgaria
+			hidden_effect = {
 			every_owned_state = {
-				limit = {is_core_of = POL}
+				limit = {is_core_of = BUL}
 				add_core_of = SOV
+				}
+			}
+		}
+
+		ai_will_do = {factor = 100}
+	}
+
+	#Национализация территорий Румынии
+	SOV_nationalize_romanian_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Romania
+				ROM = {
+					all_core_state = {
+						is_owned_by = SOV
+					}
+				}
+			}
+		}
+
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Romania
+			hidden_effect = {
+				every_owned_state = {
+					limit = {is_core_of = ROM}
+					add_core_of = SOV
+				}
+				SOV = {
+					remove_state_core = 76
+					remove_state_core = 80
+				}
+			}
+		}
+
+		ai_will_do = {factor = 100}
+	}
+
+	#Национализация территорий Югославии
+	SOV_nationalize_yugoslavian_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Yugoslavia
+				YUG = {
+					all_core_state = {
+						is_owned_by = SOV
+					}
+				}
+			}
+		}
+
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Yugoslavia
+			hidden_effect = {
+				every_owned_state = {
+					limit = {is_core_of = YUG}
+					add_core_of = SOV
+				}
 			}
 		}
 
@@ -104,7 +193,6 @@ HRE_nationalization_category = {
 		icon = generic_political_actions
 		
 		available = {controls_state = 797}
-		visible = {has_completed_focus = SOV_return_tsar_grad}
 		
 		fire_only_once = yes
 		cost = 25
@@ -117,6 +205,20 @@ HRE_nationalization_category = {
 					name = Tsargrad
 				}
 			}
+		}
+	}
+
+	SOV_restore_holy_empire = {
+		icon = generic_political_actions
+		
+		available = {
+			controls_state = 797
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_cosmetic_tag = SOV_HRE
 		}
 	}
 }
