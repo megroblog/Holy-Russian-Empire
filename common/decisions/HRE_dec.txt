@@ -347,39 +347,177 @@ HRE_nationalization_category = {
 		}
 	}
 
-	#Национализация территорий Балкана
-	SOV_nationalize_balkan_territories = {
+	#Национализация территорий Эстонии
+	SOV_nationalize_estonian_territories = {
 		priority = 20
-		on_map_mode = map_and_decisions_view
-		available = {
-			FROM = {
-				all_core_state = {
-					is_owned_by = ROOT
-				}
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 813
+				state = 812
+				state = 191
+				state = 13
+				state = 811
 			}
 		}
-
-		targets = {EST LAT LIT}
-
-		complete_effect = {
-			custom_effect_tooltip = nationalize_territories
-			hidden_effect = {
-				FROM = {
-					every_core_state = {
-						limit = {is_owned_by = ROOT}
-						add_core_of = ROOT
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Estonia
+				EST = {
+					all_core_state = {
+						is_owned_by = SOV
 					}
 				}
 			}
 		}
 
-		cost = 150
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Estonia
+			hidden_effect = {
+				every_owned_state = {
+					limit = {is_core_of = EST}
+					add_core_of = SOV
+				}
+			}
+		}
+
+		ai_will_do = {factor = 100}
 	}
+	#Национализация территорий литвы
+	SOV_nationalize_lithuanian_territories = {
+		priority = 20
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 815
+				state = 189
+				state = 814
+				state = 815
+				state = 11
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Lithuania
+				owns_state = 11
+				owns_state = 815
+				owns_state = 189
+				owns_state = 814
+			}
+		}
+
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Lithuania
+			hidden_effect = {
+				every_owned_state = {
+					limit = {is_core_of = LIT}
+					add_core_of = SOV
+				}
+			}
+		}
+
+		ai_will_do = {factor = 100}
+	}
+
+
+	#Национализация территорий Латвии
+	SOV_nationalize_latvian_territories = {
+		priority = 20
+		icon = generic_political_actions
+
+		allowed = {original_tag = SOV}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 12
+				state = 190
+				state = 809
+				state = 808
+				state = 810
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = controls_some_territories_of_Latvia
+				LAT = {
+					all_core_state = {
+						is_owned_by = SOV
+					}
+				}
+			}
+		}
+
+		cost = 300
+
+		fire_only_once = yes
+
+		complete_effect = {
+			custom_effect_tooltip = core_of_Latvia
+			hidden_effect = {
+				every_owned_state = {
+					limit = {is_core_of = LAT}
+					add_core_of = SOV
+				}
+			}
+		}
+
+		ai_will_do = {factor = 100}
+	}
+}
 
 	SOV_restore_holy_empire = { #восстановление СРИ
 		priority = 1
 		icon = generic_political_actions
-
+		highlight_states = {
+			highlight_state_targets = {
+				state = 116
+				state = 118
+				state = 183
+				state = 268
+				state = 269
+				state = 446
+				state = 447
+				state = 448
+				state = 449
+				state = 450
+				state = 451
+				state = 452
+				state = 453
+				state = 454
+				state = 455
+				state = 456
+				state = 457
+				state = 458
+				state = 459
+				state = 460
+				state = 461
+				state = 462
+				state = 513
+				state = 552
+				state = 553
+				state = 554
+				state = 661
+				state = 662
+				state = 663
+				state = 665
+				state = 677
+				state = 680
+				state = 799
+				state = 883
+				state = 907
+			}
+		}
 		cost = 25
 		
 		available = {
