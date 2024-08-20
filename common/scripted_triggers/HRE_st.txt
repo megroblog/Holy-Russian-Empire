@@ -35,3 +35,4 @@ is_mediterranean_territories = {
 	state = 883
 	state = 907
 }
+
