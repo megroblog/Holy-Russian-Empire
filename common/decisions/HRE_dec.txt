@@ -347,6 +347,35 @@ HRE_nationalization_category = {
 		}
 	}
 
+	#Национализация территорий Балкана
+	SOV_nationalize_balkan_territories = {
+		priority = 20
+		on_map_mode = map_and_decisions_view
+		available = {
+			FROM = {
+				all_core_state = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+
+		targets = {EST LAT LIT}
+
+		complete_effect = {
+			custom_effect_tooltip = nationalize_territories
+			hidden_effect = {
+				FROM = {
+					every_core_state = {
+						limit = {is_owned_by = ROOT}
+						add_core_of = ROOT
+					}
+				}
+			}
+		}
+
+		cost = 150
+	}
+
 	SOV_restore_holy_empire = { #восстановление СРИ
 		priority = 1
 		icon = generic_political_actions
@@ -354,201 +383,23 @@ HRE_nationalization_category = {
 		cost = 25
 		
 		available = {
-			controls_state = 797
+			OR = {
+				AND = {
+					#TODO: для каждого решения в категории добавить флаг, а потом проверять его наличие
+				}
+				is_debug = yes
+			}
 		}
 		
 		fire_only_once = yes
 		
-		complete_effect = {
-			set_cosmetic_tag = SOV_HRE
-		}
+		complete_effect = {set_cosmetic_tag = SOV_HRE}
 	}
 
-	#Национализация территорий Эстонии
-	SOV_nationalize_estonian_territories = {
-		priority = 20
-		icon = generic_political_actions
-
-		allowed = {original_tag = SOV}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 813
-				state = 812
-				state = 191
-				state = 13
-				state = 811
-			}
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = controls_some_territories_of_Estonia
-				EST = {
-					all_core_state = {
-						is_owned_by = SOV
-					}
-				}
-			}
-		}
-
-		cost = 300
-
-		fire_only_once = yes
-
-		complete_effect = {
-			custom_effect_tooltip = core_of_Estonia
-			hidden_effect = {
-				every_owned_state = {
-					limit = {is_core_of = EST}
-					add_core_of = SOV
-				}
-			}
-		}
-
-		ai_will_do = {factor = 100}
-	}
-	#Национализация территорий литвы
-	SOV_nationalize_lithuanian_territories = {
-		priority = 20
-		icon = generic_political_actions
-
-		allowed = {original_tag = SOV}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 815
-				state = 189
-				state = 814
-				state = 815
-				state = 11
-			}
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = controls_some_territories_of_Lithuania
-				owns_state = 11
-				owns_state = 815
-				owns_state = 189
-				owns_state = 814
-			}
-		}
-
-		cost = 300
-
-		fire_only_once = yes
-
-		complete_effect = {
-			custom_effect_tooltip = core_of_Lithuania
-			hidden_effect = {
-				every_owned_state = {
-					limit = {is_core_of = LIT}
-					add_core_of = SOV
-				}
-			}
-		}
-
-		ai_will_do = {factor = 100}
-	}
-
-
-	#Национализация территорий Латвии
-	SOV_nationalize_latvian_territories = {
-		priority = 20
-		icon = generic_political_actions
-
-		allowed = {original_tag = SOV}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 12
-				state = 190
-				state = 809
-				state = 808
-				state = 810
-			}
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = controls_some_territories_of_Latvia
-				LAT = {
-					all_core_state = {
-						is_owned_by = SOV
-					}
-				}
-			}
-		}
-
-		cost = 300
-
-		fire_only_once = yes
-
-		complete_effect = {
-			custom_effect_tooltip = core_of_Latvia
-			hidden_effect = {
-				every_owned_state = {
-					limit = {is_core_of = LAT}
-					add_core_of = SOV
-				}
-			}
-		}
-
-		ai_will_do = {factor = 100}
-	}
 }
 
 HRE_debug_category = {
-	HRE_clr_flags = {
-		icon = generic_political_actions
 
-		allowed = {is_debug = yes}
-
-		complete_effect = {
-			SOV = {
-				clr_country_flag = take_all_of_Poland
-				clr_country_flag = population_preparation_completed
-			}
-			GER = {
-				clr_country_flag = agreed_to_split
-				clr_country_flag = disagreed_to_split
-			}
-			CZE = {
-				clr_country_flag = agreed_to_split
-				clr_country_flag = disagreed_to_split
-			}
-		}
-	}
-
-	HRE_return_territories_to_Poland = {
-		icon = generic_political_actions
-
-		visible = {SOV = {any_controlled_state = {is_core_of = POL}}}
-
-		complete_effect = {
-			POL = {
-				every_core_state = {
-					transfer_state_to = POL
-				}
-			}
-			SOV = {
-				clr_country_flag = take_all_of_Poland
-			}
-			GER = {
-				clr_country_flag = agreed_to_split
-				clr_country_flag = disagreed_to_split
-			}
-			CZE = {
-				clr_country_flag = agreed_to_split
-				clr_country_flag = disagreed_to_split
-			}
-		}
-	}
-	
-	HRE_event = {
-		icon = generic_political_actions
-
-		allowed = {is_debug = yes}
-
-		complete_effect = {
-			country_event = {id = HRE_event.1}
-		}
-	}
 }
 
 
