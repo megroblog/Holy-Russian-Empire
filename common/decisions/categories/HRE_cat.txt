@@ -3,6 +3,11 @@ HRE_nationalization_category = {
 
 	priority = 100
 
+	#on_map_area = {
+	#	name = SOV_nationalize_mediterranean
+	#	state = 116
+	#}
+
 	allowed = {
 		OR = {
 			original_tag = SOV

@@ -109,6 +109,8 @@ SOV_reward_chosen_generals_desc: "Поощрение лояльных и тал�
 
     SOV_the_memory_of_1917_tt: "Все регионы стран §Y[EST.GetNameWithFlag]§!, §Y[LAT.GetNameWithFlag]§!, §Y[LIT.GetNameWithFlag]§! и §Y[FIN.GetNameWithFlag]§! получат претензии §Y[SOV.GetNameWithFlag]§!"
 
+    controls_territories_of_Mediterranean: "Вы контролируете территории §YСредиземноморья§!"
+
     #categories
     HRE_nationalization_category: "Объединение священной Российской империи"
 
@@ -126,6 +128,12 @@ SOV_reward_chosen_generals_desc: "Поощрение лояльных и тал�
     SOV_nationalize_romanian_territories: "Интегрирование территорий Румынии"
 
     SOV_nationalize_yugoslavian_territories: "Интегрирование территорий Югославии"
+
+    SOV_rename_istanbul: "Переименовать Стамбул"
+
+    SOV_restore_holy_empire: "Восстановить Священно-российскую имерию" 
+
+    SOV_nationalize_mediterranean: "Подчинить Средеземье"
 
 #other
     sov_offers_to_split: "Предложение раздела Польши"
