@@ -1,4 +1,4 @@
 SOV_HRE = {
-	color = rgb { 255 73 121 }
-	color_ui = rgb { 255 73 121 }
+	color = rgb { 249 249 43 }
+	color_ui = rgb { 249 249 43 }
 }

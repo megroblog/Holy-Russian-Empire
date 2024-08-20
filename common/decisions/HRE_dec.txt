@@ -81,7 +81,7 @@ HRE_nationalization_category = {
 			}
 		}
 
-		cost = 300
+		cost = 125
 
 		fire_only_once = yes
 
@@ -132,7 +132,7 @@ HRE_nationalization_category = {
 			}
 		}
 
-		cost = 300
+		cost = 250
 
 		fire_only_once = yes
 
@@ -191,7 +191,7 @@ HRE_nationalization_category = {
 			}
 		}
 
-		cost = 300
+		cost = 150
 
 		fire_only_once = yes
 
@@ -320,7 +320,7 @@ HRE_nationalization_category = {
 		ai_will_do = {base = 100}
 	}
 
-	SOV_rename_istanbul = {
+	SOV_rename_istanbul = { #царьград
 		priority = 5
 		icon = generic_political_actions
 		highlight_states = {
@@ -335,6 +335,9 @@ HRE_nationalization_category = {
 		
 		complete_effect = {
 			797 = {set_state_name = Tsargrad}
+			797 = {
+				add_core_of = SOV
+			}
 			hidden_effect = {
 				set_province_name = {
 					id = 9833
@@ -344,7 +347,7 @@ HRE_nationalization_category = {
 		}
 	}
 
-	SOV_restore_holy_empire = {
+	SOV_restore_holy_empire = { #восстановление СРИ
 		priority = 1
 		icon = generic_political_actions
 
