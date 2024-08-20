@@ -2369,7 +2369,7 @@ country_event = {
 	}
 }
 country_event = {#ультиматум турции
-	id = HRE_event.76
+	id = HRE_event.76 
 	title = HRE_event.76.t
 	desc = HRE_event.76.d
 	picture = GFX_report_event_generic_sign_treaty2
