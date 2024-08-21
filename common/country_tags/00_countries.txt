@@ -1,5 +1,5 @@
 GER	= "countries/Germany.txt"
-BZM = "countries/BZM_cosmetic_tag.txt"
+BZM = "countries/Byzantium.txt"
 ENG = "countries/United Kingdom.txt"
 SOV = "countries/Soviet Union.txt"
 SWE	= "countries/Sweden.txt"

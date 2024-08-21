@@ -1,4 +1,0 @@
-BZM = {
-	color = rgb { 139 55 134 }
-	color_ui = rgb { 139 55 134 }
-}

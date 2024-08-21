@@ -9,23 +9,12 @@ HRE_nationalization_category = {
 	#}
 
 	allowed = {
-		OR = {
 			original_tag = SOV
-			original_tag = GER
-			original_tag = CZE
-		}
 	}
 
 	visible = {SOV = {has_completed_focus = SOV_cut_a_path_to_Europe}}
 }
 
-HRE_debug_category = {
-	icon = generic_political_actions
-
-	priority = 100
-
-	allowed = {is_debug = yes}
-}
 HRE_Turkey_category = {
 	icon = generic_political_actions
 
@@ -35,4 +24,51 @@ HRE_Turkey_category = {
 			original_tag = SOV
 	}
 	visible = {SOV = {has_completed_focus = SOV_put_pressure_on_turkey}}
+}
+
+HRE_integration_of_the_German_lands = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {
+			original_tag = GER
+	}
+	visible = {GER = {has_completed_focus = GER_rhineland}}	
+}
+
+HRE_integration_of_the_impare_lands = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {
+		original_tag = CZE
+	}
+	visible = {CZE = {has_completed_focus = CZE_political_direction}}
+
+	available = {
+		owns_state = 88
+		owns_state = 91
+		owns_state = 89
+
+	}
+}
+
+HRE_integration_territories_of_hungary = {
+	icon = generic_political_actions
+
+	priority = 100
+
+	allowed = {
+		original_tag = HUN
+	}
+	visible = {has_country_flag = dermo}
+
+	available = {
+		owns_state = 88
+		owns_state = 91
+		owns_state = 89
+
+	}
 }

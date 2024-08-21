@@ -1,0 +1,12 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_BZM_imperator_kazak"
+		texturefile = "gfx/leaders/BZM/portrait_BZM_imperator_kazak.dds"
+	}
+}
+
+spriteType = {
+		name = "GFX_portrait_BZM_Rafael"
+		texturefile = "gfx/leaders/BZM/portrait_BZM_Rafael.dds"
+	}
+}

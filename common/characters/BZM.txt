@@ -1,0 +1,31 @@
+characters = {
+	BZM_KAZAK = {
+		name = "Justinian III" 
+		portraits = {
+			civilian = {
+				large = GFX_portrait_BZM_imperator_kazak
+			}
+		}
+		country_leader = {
+			ideology = oligarchism
+			expire = "1950.1.1.1"
+			id = -1
+		}
+	}
+
+
+	BZM_comtsar = {
+		name = "Alexio Katsaros" 
+		portraits = {
+			civilian = {
+				large = GFX_portrait_BZM_Alexio
+			}
+		}
+		country_leader = {
+			ideology = Marxism
+			expire = "1950.1.1.1"
+			id = -1
+		}
+	}
+}
+	

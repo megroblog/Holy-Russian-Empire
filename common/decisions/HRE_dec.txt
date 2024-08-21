@@ -21,7 +21,7 @@ HRE_nationalization_category = {
 				state = 784
 			}
 		}
-		available = {
+		available = { 
 			custom_trigger_tooltip = {
 				tooltip = controls_some_territories_of_Poland
 				owns_state = 10
@@ -97,19 +97,206 @@ HRE_nationalization_category = {
 
 		ai_will_do = {factor = 100}
 	}
-
-	SOV_To_revive_Greek_ideals = {#создание византии
-		priority = 10
+	#передача терок везантии
+	SOV_give_bzm_territories = {
+		priority = 20
 		icon = generic_political_actions
 
 		allowed = {original_tag = SOV}
 		highlight_states = {
 			highlight_state_targets = {
+				state = 106
+				state = 44
+				state = 105
+				state = 804
+				state = 103
+				state = 163
+				state = 852
+				state = 736
+				state = 160
+				state = 161
+				state = 162
+				state = 162
+				state = 2
+				state = 849
+				state = 117
+				state = 156
+				state = 115
+				state = 157
+				state = 159
+				state = 934
+				state = 850
+				state = 39
+			}
+		}
+		visible = {
+			has_country_flag = stambuldd
+		}
+		available = {
+			custom_trigger_tooltip = {
+				owns_state = 850
+				owns_state = 39
+				owns_state = 106
+				owns_state = 44
+				owns_state = 105
+				owns_state = 804
+				owns_state = 103
+				owns_state = 163
+				owns_state = 852
+				owns_state = 736
+				owns_state = 160
+				owns_state = 161
+				owns_state = 162
+				owns_state = 162
+				owns_state = 2
+				owns_state = 849
+				owns_state = 117
+				owns_state = 156
+				owns_state = 115
+				owns_state = 157
+				owns_state = 159
+				owns_state = 934
+			}
+		}
+
+		cost = 40
+
+		fire_only_once = yes
+
+		complete_effect = {
+			BZM = {
+				add_state_core = 850
+				add_state_core = 39
+				add_state_core = 106	
+				add_state_core = 44
+				add_state_core = 105
+				add_state_core = 804
+				add_state_core = 103
+				add_state_core = 163 
+				add_state_core = 852
+				add_state_core = 736
+				add_state_core = 160
+				add_state_core = 161
+				add_state_core = 162
+				add_state_core = 162
+				add_state_core = 2
+				add_state_core = 849
+				add_state_core = 117
+				add_state_core = 156
+				add_state_core = 115
+				add_state_core = 157
+				add_state_core = 159
+				add_state_core = 934
+				BZM = { country_event = { id = HRE_event.80 }}
+			}
+		}
+		ai_will_do = {factor = 100}
+	}
+
+	SOV_To_revive_Greek_ideals = {#создание византии
+		priority = 100
+		icon = generic_political_actions
+		cost = 30
+
+		allowed = {original_tag = SOV}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 798
+				state = 349
 				state = 731
+				state = 185
+				state = 805
+				state = 47
+				state = 186
+				state = 184
+				state = 347
+				state = 797
+				state = 341
+				state = 182
+				state = 187
+				state = 164
+				state = 340
+				state = 356
+				state = 344
+				state = 355
+				state = 343
+				state = 339
+				state = 342
+				state = 345
+				state = 348
+				state = 799
+				state = 346
+				state = 49
+				state = 183
+			}
+		}
+		visible = {
+			has_country_flag = stambulddd
+		}
+		available = {
+			custom_trigger_tooltip = {
+				owns_state = 798
+				owns_state = 349
+				owns_state = 731
+				owns_state = 185
+				owns_state = 805
+				owns_state = 47
+				owns_state = 186
+				owns_state = 184
+				owns_state = 347
+				owns_state = 797
+				owns_state = 341
+				owns_state = 182
+				owns_state = 187
+				owns_state = 164
+				owns_state = 340
+				owns_state = 356
+				owns_state = 344
+				owns_state = 355
+				owns_state = 343
+				owns_state = 339
+				owns_state = 342
+				owns_state = 345
+				owns_state = 348
+				owns_state = 799
+				owns_state = 346
+				owns_state = 49
+				owns_state = 183
+				
 			}
 		}
 		complete_effect = {
 			custom_effect_tooltip = core_of_Greece
+			set_country_flag = stambuldd
+			BZM = {
+				add_state_core = 798
+				add_state_core = 349
+				add_state_core = 731
+				add_state_core = 185
+				add_state_core = 805
+				add_state_core = 47
+				add_state_core = 186
+				add_state_core = 184
+				add_state_core = 347
+				add_state_core = 797
+				add_state_core = 341
+				add_state_core = 182
+				add_state_core = 187
+				add_state_core = 164
+				add_state_core = 340
+				add_state_core = 356
+				add_state_core = 344
+				add_state_core = 355
+				add_state_core = 343
+				add_state_core = 339
+				add_state_core = 342
+				add_state_core = 345
+				add_state_core = 348
+				add_state_core = 799
+				add_state_core = 346
+				add_state_core = 49
+				add_state_core = 183
+			}
 			release_puppet = BZM
 		}
 	}
@@ -177,13 +364,9 @@ HRE_nationalization_category = {
 		allowed = {original_tag = SOV}
 		highlight_states = {
 			highlight_state_targets = {
-				state = 106
 				state = 803
 				state = 802
 				state = 108
-				state = 105
-				state = 804
-				state = 103
 				state = 853
 				state = 102
 				state = 109
@@ -191,19 +374,21 @@ HRE_nationalization_category = {
 				state = 764
 				state = 107
 				state = 104
-				state = 163
-				state = 736
-				state = 852
 			}
 		}
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = controls_some_territories_of_Yugoslavia
-				YUG = {
-					all_core_state = {
-						is_owned_by = SOV
-					}
-				}
+				owns_state = 803
+				owns_state = 802
+				owns_state = 108
+				owns_state = 853
+				owns_state = 102
+				owns_state = 109
+				owns_state = 45
+				owns_state = 764
+				owns_state = 107
+				owns_state = 104
 			}
 		}
 
@@ -238,8 +423,6 @@ HRE_nationalization_category = {
 				state = 116
 				state = 118
 				state = 183
-				state = 268
-				state = 269
 				state = 446
 				state = 447
 				state = 448
@@ -277,133 +460,86 @@ HRE_nationalization_category = {
 
 		available = {
 			custom_trigger_tooltip = {
-				owned_state = 116
-				owned_state = 118
-				owned_state = 183
-				owned_state = 268
-				owned_state = 269
-				owned_state = 446
-				owned_state = 447
-				owned_state = 448
-				owned_state = 449
-				owned_state = 450
-				owned_state = 451
-				owned_state = 452
-				owned_state = 453
-				owned_state = 454
-				owned_state = 455
-				owned_state = 456
-				owned_state = 457
-				owned_state = 458
-				owned_state = 459
-				owned_state = 460
-				owned_state = 461
-				owned_state = 462
-				owned_state = 513
-				owned_state = 552
-				owned_state = 553
-				owned_state = 554
-				owned_state = 661
-				owned_state = 662
-				owned_state = 663
-				owned_state = 665
-				owned_state = 677
-				owned_state = 680
-				owned_state = 799
-				owned_state = 883
-				owned_state = 907
+				owns_state = 116
+				owns_state = 118
+				owns_state = 183
+				owns_state = 446
+				owns_state = 447
+				owns_state = 448
+				owns_state = 449
+				owns_state = 450
+				owns_state = 451
+				owns_state = 452
+				owns_state = 453
+				owns_state = 454
+				owns_state = 455
+				owns_state = 456
+				owns_state = 457
+				owns_state = 458
+				owns_state = 459
+				owns_state = 460
+				owns_state = 461
+				owns_state = 462
+				owns_state = 513
+				owns_state = 552
+				owns_state = 553
+				owns_state = 554
+				owns_state = 661
+				owns_state = 662
+				owns_state = 663
+				owns_state = 665
+				owns_state = 677
+				owns_state = 680
+				owns_state = 799
+				owns_state = 883
+				owns_state = 907				
 			}
 		}
 
 
-		complete_effect = {
+		complete_effect = {	 #средиземноморье
 		custom_effect_tooltip = SOV_nationalize_mediterranean
-		hidden_effect = {
-			116 = { add_compliance = 20 }
-			118 = { add_compliance = 20 }
-			183 = { add_compliance = 20 }
-			268 = { add_compliance = 20 }
-			269 = { add_compliance = 20 }
-			446 = { add_compliance = 20 }
-			447 = { add_compliance = 20 }
-			448 = { add_compliance = 20 }
-			449 = { add_compliance = 20 }
-			450 = { add_compliance = 20 }
-			451 = { add_compliance = 20 }
-			452 = { add_compliance = 20 }
-			453 = { add_compliance = 20 } 
-			454 = { add_compliance = 20 }
-			455 = { add_compliance = 20 }
-			456 = { add_compliance = 20 }
-			457 = { add_compliance = 20 }
-			458 = { add_compliance = 20 }
-			459 = { add_compliance = 20 }
-			460 = { add_compliance = 20 }
-			461 = { add_compliance = 20 }
-			462 = { add_compliance = 20 }
-			513 = { add_compliance = 20 }
-			552 = { add_compliance = 20 }
-			553 = { add_compliance = 20 }
-			554 = { add_compliance = 20 }
-			661 = { add_compliance = 20 }
-			662 = { add_compliance = 20 }
-			663 = { add_compliance = 20 }
-			665 = { add_compliance = 20 }
-			677 = { add_compliance = 20 }
-			680 = { add_compliance = 20 }
-			799 = { add_compliance = 20 }
-			883 = { add_compliance = 20 }
-			907 = { add_compliance = 20 }
-		}
-		}
-	}
-
-	# Решение для национализации территорий Германией
-	GER_nationalize_polish_territories = {
-		icon = generic_political_actions
-
-		allowed = {original_tag = GER}
-
-		visible = {
-			owns_state = 85
-			owns_state = 86
-			owns_state = 762
-			owns_state = 807
-		}
-
-		cost = 100
-
-		fire_only_once = yes
-
-		complete_effect = {
-			every_owned_state = {
-				limit = {is_core_of = POL}
-				add_core_of = GRE
+			hidden_effect = {
+				116 = { add_compliance = 20 }
+				118 = { add_compliance = 20 }
+				183 = { add_compliance = 20 }
+				268 = { add_compliance = 20 }
+				269 = { add_compliance = 20 }
+				446 = { add_compliance = 20 }
+				447 = { add_compliance = 20 }
+				448 = { add_compliance = 20 }
+				449 = { add_compliance = 20 }
+				450 = { add_compliance = 20 }
+				451 = { add_compliance = 20 }
+				452 = { add_compliance = 20 }
+				453 = { add_compliance = 20 }
+				454 = { add_compliance = 20 }
+				455 = { add_compliance = 20 }
+				456 = { add_compliance = 20 }
+				457 = { add_compliance = 20 }
+				458 = { add_compliance = 20 }
+				459 = { add_compliance = 20 }
+				460 = { add_compliance = 20 }
+				461 = { add_compliance = 20 }
+				462 = { add_compliance = 20 }
+				513 = { add_compliance = 20 }
+				552 = { add_compliance = 20 }
+				553 = { add_compliance = 20 }
+				554 = { add_compliance = 20 }
+				661 = { add_compliance = 20 }
+				662 = { add_compliance = 20 }
+				663 = { add_compliance = 20 }
+				665 = { add_compliance = 20 }
+				677 = { add_compliance = 20 }
+				680 = { add_compliance = 20 }
+				799 = { add_compliance = 20 }
+				883 = { add_compliance = 20 }
+				907 = { add_compliance = 20 } 
 			}
 		}
-
-		ai_will_do = {base = 100}
 	}
-
-	# Решение для национализации территорий Чехословакией
-	CZE_nationalize_polish_territories = {
-		icon = generic_political_actions
-
-		allowed = {original_tag = CZE}
-
-		cost = 100
-
-		fire_only_once = yes
-
-		complete_effect = {
-			every_owned_state = {
-				limit = {is_core_of = POL}
-				add_core_of = CZE
-			}
-		}
-
-		ai_will_do = {base = 100}
-	}
+	
+	
 
 	SOV_rename_istanbul = { #царьград
 		priority = 5
@@ -419,6 +555,7 @@ HRE_nationalization_category = {
 		cost = 25
 		
 		complete_effect = {
+			set_country_flag = stambulddd
 			797 = {set_state_name = Tsargrad}
 			797 = {
 				add_core_of = SOV
@@ -429,6 +566,9 @@ HRE_nationalization_category = {
 					name = Tsargrad
 				}
 			}
+		}
+		visible = {
+			owns_state = 797
 		}
 	}
 
@@ -515,7 +655,59 @@ SOV_nationalize_lithuanian_territories = {
 
 	ai_will_do = {factor = 100}
 }
+#Национализация территорий финляндии
+SOV_nationalize_finland_territories = {
+	priority = 20
+	icon = generic_political_actions
 
+	allowed = {original_tag = SOV}
+	highlight_states = {
+		highlight_state_targets = {
+			state = 146
+			state = 928
+			state = 111
+			state = 926
+			state = 149
+			state = 929
+			state = 148
+			state = 147
+			state = 930
+			state = 927
+			state = 150
+			state = 145
+		}
+	}
+	available = {
+		owns_state = 146
+		owns_state = 928
+		owns_state = 111
+		owns_state = 926
+		owns_state = 149
+		owns_state = 929 
+		owns_state = 148
+		owns_state = 147
+		owns_state = 930
+		owns_state = 927
+		owns_state = 150
+		owns_state = 145
+	}
+
+	cost = 300
+
+	fire_only_once = yes
+
+	complete_effect = {
+		custom_effect_tooltip = core_of_Finland
+		hidden_effect = {
+			every_owned_state = {
+				limit = {is_core_of = FIN}
+				add_core_of = SOV
+			}
+		}
+	}
+
+	ai_will_do = {factor = 100}
+}
 
 	#Национализация территорий Латвии
 	SOV_nationalize_latvian_territories = {
@@ -561,65 +753,117 @@ SOV_nationalize_lithuanian_territories = {
 	}
 }
 
+HRE_integration_of_the_impare_lands = {
+# Решение для национализации территорий Чехословакией
+CZE_nationalize_polish_territories = {
+	icon = generic_political_actions
 
-	SOV_restore_holy_empire = { #восстановление СРИ
-		priority = 1
+	allowed = {original_tag = CZE}
+
+	cost = 100
+
+	fire_only_once = yes
+
+	complete_effect = {
+		every_owned_state = {
+			limit = {is_core_of = POL}
+			add_core_of = CZE
+		}
+	}
+
+	ai_will_do = {base = 100}
+}
+}
+
+HRE_integration_of_the_German_lands = { 
+
+	GER_nationalize_swiderland_land = { #швейцария
 		icon = generic_political_actions
-		highlight_states = {
-			highlight_state_targets = {
-				state = 116
-				state = 118
-				state = 183
-				state = 268
-				state = 269
-				state = 446
-				state = 447
-				state = 448
-				state = 449
-				state = 450
-				state = 451
-				state = 452
-				state = 453
-				state = 454
-				state = 455
-				state = 456
-				state = 457
-				state = 458
-				state = 459
-				state = 460
-				state = 461
-				state = 462
-				state = 513
-				state = 552
-				state = 553
-				state = 554
-				state = 661
-				state = 662
-				state = 663
-				state = 665
-				state = 677
-				state = 680
-				state = 799
-				state = 883
-				state = 907
-			}
-		}
-		cost = 25
-		
-		available = {
-			OR = {
-				AND = {
-					#TODO: для каждого решения в категории добавить флаг, а потом проверять его наличие
-				}
-				is_debug = yes
-			}
-		}
-		
+
+		allowed = {original_tag = GER}
+
+		cost = 300
+
 		fire_only_once = yes
-		
-		complete_effect = {set_cosmetic_tag = SOV_HRE}
+
+		complete_effect = {
+			add_state_core = 3
+			add_state_core = 845
+			add_state_core = 846
+			add_state_core = 847
+			add_state_core = 151
+			add_state_core = 846
+		}
+		available = {
+			owns_state = 3
+			owns_state = 845
+			owns_state = 846
+			owns_state = 847
+			owns_state = 151
+			owns_state = 846
+		}
+	}
+	GER_nationalize_slovenian_land = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = GER}
+
+		cost = 250
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_state_core = 102
+			add_state_core = 853
+		}
+		available = {
+			owns_state = 102
+			owns_state = 853
+		}
+	}
+	
+	# Решение для национализации территорий Германией
+	GER_nationalize_polish_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = GER}
+
+		cost = 100
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_state_core = 86
+			add_state_core = 762
+			add_state_core = 362
+			add_state_core = 807	
+		}
+
+		ai_will_do = {base = 100}
 	}
 }
+
+
+
+HRE_integration_territories_of_hungary = {
+
+	annex_czech_territories = {
+		icon = generic_political_actions
+
+		allowed = {original_tag = HUN}
+
+		cost = 1
+		visible = {
+		exists = yes
+		}
+		complete_effect = {
+			add_state_core = 88
+			add_state_core = 91
+			add_state_core = 89
+		}
+	}
+}
+
 
 
 HRE_Turkey_category = {
@@ -659,6 +903,7 @@ HRE_Turkey_category = {
 			factor = 100
 		}
 		
+
 		complete_effect = {
 			set_country_flag = turkey_annexation_completed
 			custom_effect_tooltip = SOV_turkey_annexation_tooltip
@@ -667,6 +912,7 @@ HRE_Turkey_category = {
 			}
 		}
 	}
+
 }
 
 

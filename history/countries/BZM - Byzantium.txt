@@ -4,6 +4,10 @@ oob = "BZM_1936"
 
 set_research_slots = 3
 
+recruit_character = BZM_KAZAK
+recruit_character = BZM_comtsar
+
+
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
@@ -30,6 +34,5 @@ set_politics = {
 set_popularities = {
 	democratic = 15
 	fascism = 15
-	communism = 0
 	neutrality = 70
 }
